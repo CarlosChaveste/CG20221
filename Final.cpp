@@ -49,8 +49,8 @@ GLFWmonitor* monitors;
 void getResolution(void);
 
 // camera
-Camera camera(glm::vec3(0.0f, 10.0f, 290.0f));
-float MovementSpeed = 0.1f;
+Camera camera(glm::vec3(0.0f, 25.0f, 525.0f));
+float MovementSpeed = 20.0f;
 float lastX = SCR_WIDTH / 2.0f;
 float lastY = SCR_HEIGHT / 2.0f;
 bool firstMouse = true;
@@ -322,6 +322,10 @@ int main()
 	// load models
 	// -----------
 	Model piso("resources/objects/piso/piso.obj");
+	Model pared("resources/objects/Pared/Pared.obj");
+	Model puerta("resources/objects/Puerta/Puerta.obj");
+	Model puertaI("resources/objects/PuertaI/PuertaI.obj");
+	Model paredV("resources/objects/ParedV/ParedV.obj");
 	/*Model botaDer("resources/objects/Personaje/bota.obj");
 	Model piernaDer("resources/objects/Personaje/piernader.obj");
 	Model piernaIzq("resources/objects/Personaje/piernader.obj");
@@ -386,9 +390,9 @@ int main()
 		//Setup Advanced Lights
 		staticShader.setVec3("viewPos", camera.Position);
 		staticShader.setVec3("dirLight.direction", lightDirection);
-		staticShader.setVec3("dirLight.ambient", glm::vec3(1.0f, 1.0f, 1.0f));
-		staticShader.setVec3("dirLight.diffuse", glm::vec3(0.0f, 0.0f, 0.0f));
-		staticShader.setVec3("dirLight.specular", glm::vec3(0.0f, 0.0f, 0.0f));
+		staticShader.setVec3("dirLight.ambient", glm::vec3(0.8f, 0.8f, 0.8f));
+		staticShader.setVec3("dirLight.diffuse", glm::vec3(0.8f, 0.8f, 0.8f));
+		staticShader.setVec3("dirLight.specular", glm::vec3(0.8f, 0.8f, 0.8f));
 
 		staticShader.setVec3("pointLight[0].position", lightPosition);
 		staticShader.setVec3("pointLight[0].ambient", glm::vec3(1.0f, 1.0f, 1.0f));
@@ -459,10 +463,193 @@ int main()
 		casaDoll.Draw(staticShader);
 		*/
 		model = glm::mat4(1.0f);
-		model = glm::translate(model, glm::vec3(0.0f, -1.75f, 0.0f));
-		model = glm::scale(model, glm::vec3(0.2f));
+		model = glm::translate(model, glm::vec3(0.0f, 0.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.3f));
 		staticShader.setMat4("model", model);
 		piso.Draw(staticShader);
+		
+		//Puerta
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(300.5f, 25.0f, -232.0f));
+		model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.2f));
+		staticShader.setMat4("model", model);
+		puerta.Draw(staticShader);
+
+		//Pared Superior Parents Room
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(67.5f, 25.0f, -232.0f));
+		model = glm::scale(model, glm::vec3(0.55f, 0.2f, 0.15f));
+		staticShader.setMat4("model", model);
+		pared.Draw(staticShader);
+
+		//Puerta 1 Derecha Parents Room 
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-71.5f, 0.0f, -437.0f));
+		model = glm::scale(model, glm::vec3(1.2f, 0.6325f, 1.0f));
+		staticShader.setMat4("model", model);
+		puertaI.Draw(staticShader);
+
+
+		//Pared 1 Derecha Parents Room 
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-71.5f, 25.0f, -461.765f));
+		model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.0375f, 0.2f, 0.15f));
+		staticShader.setMat4("model", model);
+		pared.Draw(staticShader);
+
+		//Pared 2 Derecha Parents Room 
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-71.5f, 25.0f, -400.5f));
+		model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.085f, 0.2f, 0.15f));
+		staticShader.setMat4("model", model);
+		pared.Draw(staticShader);
+
+		//Pared 3 Derecha Parents Room 
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-71.5f, 25.0f, -255.5f));
+		model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.1f, 0.2f, 0.15f));
+		staticShader.setMat4("model", model);
+		pared.Draw(staticShader);
+
+
+		//Pared Superior Parents Room
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-182.5f, 25.0f, -473.0f));
+		model = glm::scale(model, glm::vec3(0.45f, 0.2f, 0.15f));
+		staticShader.setMat4("model", model);
+		pared.Draw(staticShader);
+
+		//Puerta 1 Izquierda Parents Room 
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-296.5f, 0.0f, -380.0f));
+		model = glm::scale(model, glm::vec3(1.2f, 0.6325f, 1.0f));
+		staticShader.setMat4("model", model);
+		puertaI.Draw(staticShader);
+
+		//Pared 1 Izquierda Parents Room
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-296.5f, 25.0f, -435.0f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.16f, 0.2f, 0.15f));
+		staticShader.setMat4("model", model);
+		pared.Draw(staticShader);
+
+		//Pared 2 Izquierda Parents Room
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-296.5f, 25.0f, -315.0f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.15f));
+		staticShader.setMat4("model", model);
+		pared.Draw(staticShader);
+
+		//Pared Lounge-KidsRoom
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-207.5f, 25.0f, -48.0f));
+		model = glm::scale(model, glm::vec3(0.35f, 0.2f, 0.15f));
+		staticShader.setMat4("model", model);
+		pared.Draw(staticShader);
+
+		//Pared 1 Izquierda Kids Room
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-296.5f, 25.0f, -248.0f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.1f, 0.2f, 0.15f));
+		staticShader.setMat4("model", model);
+		pared.Draw(staticShader);
+
+
+		//Pared 2 Izquierda Kids Room
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-296.5f, 25.0f, -148.0f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.1f, 0.2f, 0.15f));
+		staticShader.setMat4("model", model);
+		pared.Draw(staticShader);
+
+		//Pared 3 Izquierda Kids Room
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-296.5f, 25.0f, -48.0f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.1f, 0.2f, 0.15f));
+		staticShader.setMat4("model", model);
+		pared.Draw(staticShader);
+
+
+		//Pared Izquierda Lounge
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-296.5f, 25.0f, 64.8f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.35f, 0.2f, 0.15f));
+		staticShader.setMat4("model", model);
+		pared.Draw(staticShader);
+			
+		
+		//Pared Inferior Lounge
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-207.5f, 25.0f, 150.0f));
+		model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.35f,0.2f,0.15f));
+		staticShader.setMat4("model", model);
+		paredV.Draw(staticShader);
+		
+		//Pared Derecha Lounge 1
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-121.5f, 25.0f, 113.0f));
+		model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.15f, 0.2f, 0.15f));
+		staticShader.setMat4("model", model);
+		pared.Draw(staticShader);
+
+		//Pared Derecha Lounge 2
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-120.0f, 25.0f, 16.0f));
+		model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.05f, 0.2f, 0.15f));
+		staticShader.setMat4("model", model);
+		pared.Draw(staticShader);
+
+		//Pared Izquierda Entrada
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-71.0f, 25.0f, 5.0f));
+		model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));		model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.15f));
+		staticShader.setMat4("model", model);
+		pared.Draw(staticShader);
+
+		//Pared Derecha Entrada
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(50.0f, 25.0f, 5.0f));
+		model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));		model = glm::scale(model, glm::vec3(0.1f, 0.2f, 0.15f));
+		staticShader.setMat4("model", model);
+		pared.Draw(staticShader);
+
+		//Pared Izquierda Living Room
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(75.f, 25.0f, 52.5f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.15f));
+		staticShader.setMat4("model", model);
+		pared.Draw(staticShader);
+
+		//Pared Inferior Izquierda Living Room
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(103.9f, 25.0f, 104.50f));
+		model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.125f, 0.2f, 0.15f));
+		staticShader.setMat4("model", model);
+		pared.Draw(staticShader);
+
+		//Pared Inferior Derecha Living Room
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(213.25f, 25.0f, 104.50f));
+		model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.125f, 0.2f, 0.15f));
+		staticShader.setMat4("model", model);
+		pared.Draw(staticShader);
+
+		
 		/*
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, -70.0f));
 		model = glm::scale(model, glm::vec3(5.0f));
