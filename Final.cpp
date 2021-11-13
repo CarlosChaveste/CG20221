@@ -864,8 +864,7 @@ int main()
 		model = glm::scale(model, glm::vec3(1.0f, 0.579f, 0.93f));
 		staticShader.setMat4("model", model);
 		puertaPrinc.Draw(staticShader);
-		skyboxShader.use();
-		//puerta Principal Living Room
+				//puerta Principal Living Room
 		model = glm::mat4(1.0f);
 		model = glm::translate(model, glm::vec3(158.50f, 0.0f, 104.50f));
 		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
@@ -878,6 +877,8 @@ int main()
 		model = glm::scale(model, glm::vec3(1.055f, 0.579f, 0.93f));
 		staticShader.setMat4("model", model);
 		puertaPrinc.Draw(staticShader);
+		
+		skyboxShader.use();
 		skybox.Draw(skyboxShader, view, projection, camera);
 
 		// Limitar el framerate a 60
