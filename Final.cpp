@@ -873,7 +873,7 @@ int main()
 		puertaPrinc.Draw(staticShader);
 		//puerta Izquierda Entrada
 		model = glm::mat4(1.0f);
-		model = glm::translate(model, glm::vec3(-120.0f, 0.0f, 52.0f));
+		model = glm::translate(model, glm::vec3(-123.5f, 0.0f, 52.0f));
 		model = glm::scale(model, glm::vec3(1.055f, 0.579f, 0.93f));
 		staticShader.setMat4("model", model);
 		puertaPrinc.Draw(staticShader);
