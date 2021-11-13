@@ -329,6 +329,10 @@ int main()
 	Model puertaPrinc("resources/objects/puertaPrinc/puertaPrinc.obj");
 	Model techo("resources/objects/Techo/techo.obj");
 	Model techoI("resources/objects/Techo/techoI.obj");
+	Model Kitchen("resources/objects/Kitchen/Kitchen.obj");
+	Model Kitchen2("resources/objects/Kitchen2/Kitchen2.obj");
+	Model Pared2_text("resources/objects/Pared2_text/Pared2_text.obj");
+	Model refrigerador("resources/objects/refrigerador/refrigerador.obj");
 	/*Model botaDer("resources/objects/Personaje/bota.obj");
 	Model piernaDer("resources/objects/Personaje/piernader.obj");
 	Model piernaIzq("resources/objects/Personaje/piernader.obj");
@@ -662,6 +666,84 @@ int main()
 		staticShader.setMat4("model", model);
 		pared.Draw(staticShader);
 
+		//Pared Izquierda Burnace
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-71.5f, 24.15f, -207.0f));
+		model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.1f, 0.2f, 0.15f));
+		staticShader.setMat4("model", model);
+		Pared2_text.Draw(staticShader);
+
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-71.5f, 24.15f, -157.0f));
+		model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.1f, 0.2f, 0.15f));
+		staticShader.setMat4("model", model);
+		Pared2_text.Draw(staticShader);
+
+		//Pared Frontal Burnace
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-21.5f, 24.15f, -182.0f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.1f, 0.2f, 0.15f));
+		staticShader.setMat4("model", model);
+		Pared2_text.Draw(staticShader);
+
+		//Pared Kitchen y Living Room
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(101.5f, 24.15f, -157.0f));
+		model = glm::rotate(model, glm::radians(0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.528f, 0.2f, 0.15f));
+		staticShader.setMat4("model", model);
+		Pared2_text.Draw(staticShader);
+
+		//Pared Derecha Living Room 
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(242.5f, 25.0f, -116.5f));
+		model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.17f, 0.2f, 0.15f));
+		staticShader.setMat4("model", model);
+		pared.Draw(staticShader);
+
+		//Pared Derecha Living Room 2
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(242.5f, 25.0f, 9.5f));
+		model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.1f, 0.2f, 0.15f));
+		staticShader.setMat4("model", model);
+		pared.Draw(staticShader);
+
+		//Pared Derecha Living Room 3
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(242.5f, 25.0f, 100.5f));
+		model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.02f, 0.2f, 0.15f));
+		staticShader.setMat4("model", model);
+		pared.Draw(staticShader);
+
+		//Cocina parte1
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-13.0f, 8.0f, -133.0f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.3f, 0.3f, 0.4f));
+		staticShader.setMat4("model", model);
+		Kitchen.Draw(staticShader); 
+
+		//Cocina parte2
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(74.0f, 8.0f, -61.0f));
+		model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(1.5f));
+		staticShader.setMat4("model", model);
+		Kitchen2.Draw(staticShader);
+
+		//Refrigerador
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(61.0f, 0.0f, -135.0f));
+		model = glm::rotate(model, glm::radians(-45.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.11f));
+		staticShader.setMat4("model", model);
+		refrigerador.Draw(staticShader);
 		
 		/*
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, -70.0f));
