@@ -326,6 +326,9 @@ int main()
 	Model puerta("resources/objects/Puerta/Puerta.obj");
 	Model puertaI("resources/objects/PuertaI/PuertaI.obj");
 	Model paredV("resources/objects/ParedV/ParedV.obj");
+	Model puertaPrinc("resources/objects/puertaPrinc/puertaPrinc.obj");
+	Model techo("resources/objects/Techo/techo.obj");
+	Model techoI("resources/objects/Techo/techoI.obj");
 	/*Model botaDer("resources/objects/Personaje/bota.obj");
 	Model piernaDer("resources/objects/Personaje/piernader.obj");
 	Model piernaIzq("resources/objects/Personaje/piernader.obj");
@@ -468,13 +471,7 @@ int main()
 		staticShader.setMat4("model", model);
 		piso.Draw(staticShader);
 		
-		//Puerta
-		model = glm::mat4(1.0f);
-		model = glm::translate(model, glm::vec3(300.5f, 25.0f, -232.0f));
-		model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.2f));
-		staticShader.setMat4("model", model);
-		puerta.Draw(staticShader);
-
+		
 		//Pared Superior Parents Room
 		model = glm::mat4(1.0f);
 		model = glm::translate(model, glm::vec3(67.5f, 25.0f, -232.0f));
@@ -490,7 +487,7 @@ int main()
 		puertaI.Draw(staticShader);
 
 
-		//Pared 1 Derecha Parents Room 
+		//Pared 2 Derecha Parents Room 
 		model = glm::mat4(1.0f);
 		model = glm::translate(model, glm::vec3(-71.5f, 25.0f, -461.765f));
 		model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
@@ -595,9 +592,25 @@ int main()
 		staticShader.setMat4("model", model);
 		paredV.Draw(staticShader);
 		
+		//Techo Derecho Lounge
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-205.5f, 11.0f, 150.0f));
+		model = glm::rotate(model, glm::radians(180.0f), glm::vec3(-0.04f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.35f, 0.25f, 0.125f));
+		staticShader.setMat4("model", model);
+		techo.Draw(staticShader);
+		
+		//Techo Izquierdo Lounge
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-213.5f, 10.5f, 150.0f));
+		model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.045f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.35f, 0.25f, 0.125f));
+		staticShader.setMat4("model", model);
+		techoI.Draw(staticShader);
+		
 		//Pared Derecha Lounge 1
 		model = glm::mat4(1.0f);
-		model = glm::translate(model, glm::vec3(-121.5f, 25.0f, 113.0f));
+		model = glm::translate(model, glm::vec3(-124.0f, 25.0f, 113.0f));
 		model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(0.15f, 0.2f, 0.15f));
 		staticShader.setMat4("model", model);
@@ -605,7 +618,7 @@ int main()
 
 		//Pared Derecha Lounge 2
 		model = glm::mat4(1.0f);
-		model = glm::translate(model, glm::vec3(-120.0f, 25.0f, 16.0f));
+		model = glm::translate(model, glm::vec3(-124.0f, 25.0f, 16.0f));
 		model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(0.05f, 0.2f, 0.15f));
 		staticShader.setMat4("model", model);
@@ -627,7 +640,7 @@ int main()
 
 		//Pared Izquierda Living Room
 		model = glm::mat4(1.0f);
-		model = glm::translate(model, glm::vec3(75.f, 25.0f, 52.5f));
+		model = glm::translate(model, glm::vec3(75.0f, 25.0f, 52.5f));
 		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.15f));
 		staticShader.setMat4("model", model);
@@ -761,21 +774,27 @@ int main()
 		// -------------------------------------------------------------------------------------------------------------------------
 		// Caja Transparente --- Siguiente Práctica
 		// -------------------------------------------------------------------------------------------------------------------------
-		/*glEnable(GL_BLEND);
+		glEnable(GL_BLEND);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-		model = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, -70.0f));
-		model = glm::scale(model, glm::vec3(5.0f));
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(2.0f, 0.0f, 5.0f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(1.0f, 0.579f, 0.93f));
 		staticShader.setMat4("model", model);
-		cubo.Draw(staticShader);
-		glEnable(GL_BLEND);*/
-		// -------------------------------------------------------------------------------------------------------------------------
-		// Termina Escenario
-		// -------------------------------------------------------------------------------------------------------------------------
-
-		//-------------------------------------------------------------------------------------
-		// draw skybox as last
-		// -------------------
-		skyboxShader.use();
+		puertaPrinc.Draw(staticShader);
+		//puerta Principal Living Room
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(158.50f, 0.0f, 104.50f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(1.05f, 0.579f, 0.93f));
+		staticShader.setMat4("model", model);
+		puertaPrinc.Draw(staticShader);
+		//puerta Izquierda Entrada
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-120.0f, 0.0f, 52.0f));
+		model = glm::scale(model, glm::vec3(1.055f, 0.579f, 0.93f));
+		staticShader.setMat4("model", model);
+		puertaPrinc.Draw(staticShader);
 		skybox.Draw(skyboxShader, view, projection, camera);
 
 		// Limitar el framerate a 60
