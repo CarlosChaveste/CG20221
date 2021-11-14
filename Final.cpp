@@ -61,6 +61,11 @@ const int LOOP_TIME = 1000 / FPS; // = 16 milisec // 1000 millisec == 1 sec
 double	deltaTime = 0.0f,
 lastFrame = 0.0f;
 
+//Hamster
+int estado = 0, estado1 = 0;
+glm::vec3 hamstPosition(67.5f, 0.0f, 200.0f);
+glm::vec3 hamstRot(0.0f, 0.0f, 0.0f);
+
 //Lighting
 glm::vec3 lightPosition(0.0f, 4.0f, -10.0f);
 glm::vec3 lightLuzCMov(0.0f, 0.6f, 0.0f);
@@ -199,6 +204,36 @@ void animate(void)
 	lightLuzCMov.z = 120.0 * cos(LuzCMov);
 
 	LuzCMov += 0.1;
+	//AnimacionHamster
+	hamstPosition.x= 10.0 * cos(myVariable);
+	hamstPosition.z = 90.0 * sin(myVariable);
+	
+	if (estado1 == 0) {
+		hamstRot.y += 5;
+		if (hamstRot.y > 40) {
+			estado1 = 1;
+		}
+	}
+	else if (estado1 == 1) {
+		hamstRot.y -= 5;
+		if (hamstRot.y < -40) {
+			estado1 = 0;
+		}
+	}
+	
+	
+	if (estado == 0) {
+		hamstRot.x += 1;
+		if (hamstRot.x > 35) {
+			estado = 1;
+		}
+	}
+	else if (estado == 1) {
+		hamstRot.x -= 1;
+		if (hamstRot.x < -35) {
+			estado = 0;
+		}
+	}
 	
 	//Animacion muñeco de nieve
 	if (animacion_muneco)
@@ -392,6 +427,9 @@ int main()
 	Model muneco1("resources/objects/muneco/muneco1.obj");
 	Model muneco2("resources/objects/muneco/muneco2.obj");
 	Model muneco3("resources/objects/muneco/muneco3.obj");
+	Model hamster("resources/objects/Hamster/hamster.obj");
+	Model pino("resources/objects/pino/pino.obj");
+	Model puertaG("resources/objects/puertaPrinc/puertaG.obj");
 	
 	/*Model botaDer("resources/objects/Personaje/bota.obj");
 	Model piernaDer("resources/objects/Personaje/piernader.obj");
@@ -534,6 +572,72 @@ int main()
 		model = glm::scale(model, glm::vec3(0.3f));
 		staticShader.setMat4("model", model);
 		piso.Draw(staticShader);
+		
+		//Pino 1
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(150, 0, 350));
+		model = glm::scale(model, glm::vec3(10.0f, 8.0f, 10.0f));
+		staticShader.setMat4("model", model);
+		pino.Draw(staticShader);
+
+		//Pino 2
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-200, 0, 345));
+		model = glm::scale(model, glm::vec3(10.0f, 8.0f, 10.0f));
+		staticShader.setMat4("model", model);
+		pino.Draw(staticShader);
+
+		//Hamster
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(hamstPosition.x, 0, 200+hamstPosition.z));
+		model = glm::rotate(model, glm::radians(hamstRot.y), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::rotate(model, glm::radians(hamstRot.x), glm::vec3(1.0f, 0.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.1f, 0.1f,0.1f));
+		staticShader.setMat4("model", model);
+		hamster.Draw(staticShader);
+
+		//PuertaG
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(242.5f, 0.0f, -44.5f));
+		model = glm::scale(model, glm::vec3(0.58f, 0.58f, 0.87f));
+		staticShader.setMat4("model", model);
+		puertaG.Draw(staticShader);
+
+		//PuertaG2
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(242.5f, 0.0f, 65.0f));
+		model = glm::scale(model, glm::vec3(0.58f, 0.58f, 0.91f));
+		staticShader.setMat4("model", model);
+		puertaG.Draw(staticShader);
+
+
+		//PuertaG3
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-296.5f, 0.0f, -198.0f));
+		model = glm::scale(model, glm::vec3(0.58f, 0.58f, 0.75f));
+		staticShader.setMat4("model", model);
+		puertaG.Draw(staticShader);
+
+		//PuertaG3
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-296.5f, 0.0f, -98.0f));
+		model = glm::scale(model, glm::vec3(0.58f, 0.58f, 0.75f));
+		staticShader.setMat4("model", model);
+		puertaG.Draw(staticShader);
+
+		//PuertaG4
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3 (-71.5f, 0.0f, -354.5f));
+		model = glm::scale(model, glm::vec3(0.58f, 0.58f, 0.745f));
+		staticShader.setMat4("model", model);
+		puertaG.Draw(staticShader);
+
+		//PuertaG5
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-71.5f, 0.0f, -305.50f));
+		model = glm::scale(model, glm::vec3(0.58f, 0.58f, 0.745f));
+		staticShader.setMat4("model", model);
+		puertaG.Draw(staticShader);
 		
 		
 		//Pared Superior Parents Room
