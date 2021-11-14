@@ -86,6 +86,13 @@ recorrido2 = false,
 recorrido3 = false,
 recorrido4 = false;
 
+//Variables para animacion muñeco de nieve
+float	movY_bola3 = 0.5f,
+	movY_bola2 = 0.5f,
+	movY_bola1 = 0.0f,
+	rot_cabeza3 = 0.0f;
+int aux_muneco = 0;
+bool animacion_muneco = false;
 
 //Keyframes (Manipulación y dibujo)
 /*float	posX = 0.0f,
@@ -192,6 +199,55 @@ void animate(void)
 	lightLuzCMov.z = 120.0 * cos(LuzCMov);
 
 	LuzCMov += 0.1;
+	
+	//Animacion muñeco de nieve
+	if (animacion_muneco)
+	{
+		if (aux_muneco == 0)
+		{
+			if (movY_bola3 <= 25.0f)
+			{
+				movY_bola1 += 0.1;
+				movY_bola2 += 0.2;
+				movY_bola3 += 0.3;
+				rot_cabeza3 += 2.204083;
+			}
+			else
+				aux_muneco = 1;
+		}
+		if (aux_muneco == 1)
+		{
+			if (movY_bola3 >= -10.0f)
+			{
+				movY_bola1 -= 0.1;
+				movY_bola2 -= 0.2;
+				movY_bola3 -= 0.3;
+				rot_cabeza3 += 1.4621;
+			}
+			else
+				aux_muneco = 2;
+		}
+		if (aux_muneco == 2)
+		{
+			if (movY_bola3 < 0.5f)
+			{
+				movY_bola1 += 0.1;
+				movY_bola2 += 0.2;
+				movY_bola3 += 0.3;
+				rot_cabeza3 += 0.2857;
+			}
+			else
+			{
+				aux_muneco = 3;
+				animacion_muneco = false;
+			}
+		}
+		if (aux_muneco == 3)
+		{
+			aux_muneco = 0;
+		}
+	}
+
 	/*
 	movBrazoIzq += movBrazoIzqInc;
 	movRodDer += movRodDerInc;
@@ -333,6 +389,10 @@ int main()
 	Model Kitchen2("resources/objects/Kitchen2/Kitchen2.obj");
 	Model Pared2_text("resources/objects/Pared2_text/Pared2_text.obj");
 	Model refrigerador("resources/objects/refrigerador/refrigerador.obj");
+	Model muneco1("resources/objects/muneco/muneco1.obj");
+	Model muneco2("resources/objects/muneco/muneco2.obj");
+	Model muneco3("resources/objects/muneco/muneco3.obj");
+	
 	/*Model botaDer("resources/objects/Personaje/bota.obj");
 	Model piernaDer("resources/objects/Personaje/piernader.obj");
 	Model piernaIzq("resources/objects/Personaje/piernader.obj");
@@ -745,6 +805,33 @@ int main()
 		staticShader.setMat4("model", model);
 		refrigerador.Draw(staticShader);
 		
+		//----------------------------------------------------------------------------------------------
+		//Muñeco de nieve
+		//----------------------------------------------------------------------------------------------
+		//Parte inferior
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-270.0f, movY_bola1, 180.0f));
+		model = glm::rotate(model, glm::radians(0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.25f));
+		staticShader.setMat4("model", model);
+		muneco1.Draw(staticShader);
+
+		//Parte intermedia
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-270.0f, movY_bola2, 180.0f));
+		model = glm::rotate(model, glm::radians(0.0f), glm::vec3(0.0f, 1.0f, 0.0f)); 
+		model = glm::scale(model, glm::vec3(0.25f));
+		staticShader.setMat4("model", model);
+		muneco2.Draw(staticShader);
+
+		//Parte superior
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-270.0f, movY_bola3, 180.0f));
+		model = glm::rotate(model, glm::radians(rot_cabeza3), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.25f));
+		staticShader.setMat4("model", model);
+		muneco3.Draw(staticShader); 
+		
 		/*
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, -70.0f));
 		model = glm::scale(model, glm::vec3(5.0f));
@@ -915,6 +1002,11 @@ void my_input(GLFWwindow* window, int key, int scancode, int action, int mode)
 		camera.ProcessKeyboard(LEFT, (float)deltaTime);
 	if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
 		camera.ProcessKeyboard(RIGHT, (float)deltaTime);
+	
+	//tecla muñeco de nieve
+	if (key == GLFW_KEY_T && action == GLFW_PRESS)
+		animacion_muneco ^= true;
+	
 	//To Configure Model
 	/*if (glfwGetKey(window, GLFW_KEY_Y) == GLFW_PRESS)
 		posZ++;
