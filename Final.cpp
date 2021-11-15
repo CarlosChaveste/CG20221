@@ -472,6 +472,12 @@ int main()
 	Model trineos_renos_santa("resources/objects/trineos_renos_santa/trineos_renos_santa.obj");
 	Model pierna("resources/objects/trineos_renos_santa/pierna.obj");
 	Model pata("resources/objects/trineos_renos_santa/pata.obj");
+	Model calcetas("resources/objects/calceta/calceta.obj");
+	Model campanas("resources/objects/campana/campana.obj");
+	Model cSanta("resources/objects/chocoS/ChocoSantaClaus06.obj");
+	Model pasto("resources/objects/pastop/pastop.obj");
+	Model planta("resources/objects/planta/planta.obj");
+	Model regalos("resources/objects/regalos/regalos.obj");
 	/*Model botaDer("resources/objects/Personaje/bota.obj");
 	Model piernaDer("resources/objects/Personaje/piernader.obj");
 	Model piernaIzq("resources/objects/Personaje/piernader.obj");
@@ -621,18 +627,81 @@ int main()
 		
 		//Pino 1
 		model = glm::mat4(1.0f);
-		model = glm::translate(model, glm::vec3(150, 0, 350));
+		model = glm::translate(model, glm::vec3(150.0f, 0.0f, 350.0f));
 		model = glm::scale(model, glm::vec3(10.0f, 8.0f, 10.0f));
 		staticShader.setMat4("model", model);
 		pino.Draw(staticShader);
 
 		//Pino 2
 		model = glm::mat4(1.0f);
-		model = glm::translate(model, glm::vec3(-200, 0, 345));
+		model = glm::translate(model, glm::vec3(-200.0f, 0.0f, 345.0f));
 		model = glm::scale(model, glm::vec3(10.0f, 8.0f, 10.0f));
 		staticShader.setMat4("model", model);
 		pino.Draw(staticShader);
 
+		//Pino 3
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-295.0f, 0.0f, 345.0f));
+		model = glm::scale(model, glm::vec3(10.0f, 8.0f, 10.0f));
+		staticShader.setMat4("model", model);
+		pino.Draw(staticShader);
+
+		//Pino 4
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-250.0f, 0.0f, 305.0f));
+		model = glm::scale(model, glm::vec3(9.5f, 9.0f, 10.0f));
+		staticShader.setMat4("model", model);
+		pino.Draw(staticShader);
+
+		//Pino 5
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(250.0f, 0.0f, 305.0f));
+		model = glm::scale(model, glm::vec3(9.5f, 9.0f, 10.0f));
+		staticShader.setMat4("model", model);
+		pino.Draw(staticShader);
+
+		//Pino 6
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(295.0f, 0.0f, 345.0f));
+		model = glm::scale(model, glm::vec3(10.0f, 8.0f, 10.0f));
+		staticShader.setMat4("model", model);
+		pino.Draw(staticShader);
+
+		//Pasto 1
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-250.0f, 2.0f, 345.0f));
+		model = glm::scale(model, glm::vec3(12.0f, 12.0f, 12.0f));
+		staticShader.setMat4("model", model);
+		pasto.Draw(staticShader);
+
+		//Pasto 2
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-120.0f, 2.0f, 345.0f));
+		model = glm::scale(model, glm::vec3(12.0f, 12.0f, 12.0f));
+		staticShader.setMat4("model", model);
+		pasto.Draw(staticShader);
+
+		//Pasto 3
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-170.0f, 2.0f, 315.0f));
+		model = glm::scale(model, glm::vec3(12.0f, 12.0f, 12.0f));
+		staticShader.setMat4("model", model);
+		pasto.Draw(staticShader);
+
+		//Pasto 4
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-130.0f, 2.0f, 310.0f));
+		model = glm::scale(model, glm::vec3(15.0f, 15.0f, 15.0f));
+		staticShader.setMat4("model", model);
+		pasto.Draw(staticShader);
+
+		//Planta 
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-160.0f, 2.0f, 345.0f));
+		model = glm::scale(model, glm::vec3(0.4f, 0.4f, 0.4f));
+		staticShader.setMat4("model", model);
+		planta.Draw(staticShader);
+		
 		//Hamster
 		model = glm::mat4(1.0f);
 		model = glm::translate(model, glm::vec3(hamstPosition.x, 0, 200+hamstPosition.z));
@@ -641,51 +710,64 @@ int main()
 		model = glm::scale(model, glm::vec3(0.1f, 0.1f,0.1f));
 		staticShader.setMat4("model", model);
 		hamster.Draw(staticShader);
-
-		//PuertaG
-		model = glm::mat4(1.0f);
-		model = glm::translate(model, glm::vec3(242.5f, 0.0f, -44.5f));
-		model = glm::scale(model, glm::vec3(0.58f, 0.58f, 0.87f));
-		staticShader.setMat4("model", model);
-		puertaG.Draw(staticShader);
-
-		//PuertaG2
-		model = glm::mat4(1.0f);
-		model = glm::translate(model, glm::vec3(242.5f, 0.0f, 65.0f));
-		model = glm::scale(model, glm::vec3(0.58f, 0.58f, 0.91f));
-		staticShader.setMat4("model", model);
-		puertaG.Draw(staticShader);
-
-
-		//PuertaG3
-		model = glm::mat4(1.0f);
-		model = glm::translate(model, glm::vec3(-296.5f, 0.0f, -198.0f));
-		model = glm::scale(model, glm::vec3(0.58f, 0.58f, 0.75f));
-		staticShader.setMat4("model", model);
-		puertaG.Draw(staticShader);
-
-		//PuertaG3
-		model = glm::mat4(1.0f);
-		model = glm::translate(model, glm::vec3(-296.5f, 0.0f, -98.0f));
-		model = glm::scale(model, glm::vec3(0.58f, 0.58f, 0.75f));
-		staticShader.setMat4("model", model);
-		puertaG.Draw(staticShader);
-
-		//PuertaG4
-		model = glm::mat4(1.0f);
-		model = glm::translate(model, glm::vec3 (-71.5f, 0.0f, -354.5f));
-		model = glm::scale(model, glm::vec3(0.58f, 0.58f, 0.745f));
-		staticShader.setMat4("model", model);
-		puertaG.Draw(staticShader);
-
-		//PuertaG5
-		model = glm::mat4(1.0f);
-		model = glm::translate(model, glm::vec3(-71.5f, 0.0f, -305.50f));
-		model = glm::scale(model, glm::vec3(0.58f, 0.58f, 0.745f));
-		staticShader.setMat4("model", model);
-		puertaG.Draw(staticShader);
 		
-		
+		//Calcetas
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(50.0f, 30.0f, 7.5f));
+		model = glm::scale(model, glm::vec3(0.5f,0.5f, 0.5f));
+		staticShader.setMat4("model", model);
+		calcetas.Draw(staticShader);
+
+		//Calcetas 2
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-50.0f, 30.0f, 7.5f));
+		model = glm::scale(model, glm::vec3(0.5f, 0.5f, 0.5f));
+		staticShader.setMat4("model", model);
+		calcetas.Draw(staticShader);
+
+		//SantaChocolatal
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-90.0f, 2.0f, 7.5f));
+		model = glm::scale(model, glm::vec3(65.0f, 65.0f, 65.0f));
+		staticShader.setMat4("model", model);
+		cSanta.Draw(staticShader);	
+
+		//Campanas
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-207.5f, 55.0f, 162.5f));
+		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
+		staticShader.setMat4("model", model);
+		campanas.Draw(staticShader);
+
+		//Campanas
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-227.5f, 55.0f, 162.5f));
+		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
+		staticShader.setMat4("model", model);
+		campanas.Draw(staticShader);
+
+		//Campanas
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-187.5f, 55.0f, 162.5f));
+		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
+		staticShader.setMat4("model", model);
+		campanas.Draw(staticShader);
+
+		//Campanas2
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(50.0f, 37.0f, 7.5f));
+		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
+		staticShader.setMat4("model", model);
+		campanas.Draw(staticShader);
+
+		//Regalos
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(50.0f, 0.0f, 157.5f));
+		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
+		staticShader.setMat4("model", model);
+		regalos.Draw(staticShader);
+
+				
 		//Pared Superior Parents Room
 		model = glm::mat4(1.0f);
 		model = glm::translate(model, glm::vec3(67.5f, 25.0f, -232.0f));
@@ -1229,6 +1311,49 @@ int main()
 		model = glm::scale(model, glm::vec3(1.055f, 0.579f, 0.93f));
 		staticShader.setMat4("model", model);
 		puertaPrinc.Draw(staticShader);
+		
+		//PuertaG
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(242.5f, 0.0f, -44.5f));
+		model = glm::scale(model, glm::vec3(0.58f, 0.58f, 0.87f));
+		staticShader.setMat4("model", model);
+		puertaG.Draw(staticShader);
+
+		//PuertaG2
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(242.5f, 0.0f, 65.0f));
+		model = glm::scale(model, glm::vec3(0.58f, 0.58f, 0.91f));
+		staticShader.setMat4("model", model);
+		puertaG.Draw(staticShader);
+
+
+		//PuertaG3
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-296.5f, 0.0f, -198.0f));
+		model = glm::scale(model, glm::vec3(0.58f, 0.58f, 0.75f));
+		staticShader.setMat4("model", model);
+		puertaG.Draw(staticShader);
+
+		//PuertaG3
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-296.5f, 0.0f, -98.0f));
+		model = glm::scale(model, glm::vec3(0.58f, 0.58f, 0.75f));
+		staticShader.setMat4("model", model);
+		puertaG.Draw(staticShader);
+
+		//PuertaG4
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3 (-71.5f, 0.0f, -354.5f));
+		model = glm::scale(model, glm::vec3(0.58f, 0.58f, 0.745f));
+		staticShader.setMat4("model", model);
+		puertaG.Draw(staticShader);
+
+		//PuertaG5
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-71.5f, 0.0f, -305.50f));
+		model = glm::scale(model, glm::vec3(0.58f, 0.58f, 0.745f));
+		staticShader.setMat4("model", model);
+		puertaG.Draw(staticShader);
 		
 		skyboxShader.use();
 		skybox.Draw(skyboxShader, view, projection, camera);
