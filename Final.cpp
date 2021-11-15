@@ -99,6 +99,15 @@ float	movY_bola3 = 0.5f,
 int aux_muneco = 0;
 bool animacion_muneco = false;
 
+//Variables para movimiento del trineo
+glm::vec3 posicionTrineo(500.0f, 150.0f, 0.0f);
+float	Trineo_aument = 0.0f,
+		Trineo_aument2 = 0.0f,
+		rotpierna = 0.0f,
+		rotpata = 0.0f;
+bool animacion_trineo = false;
+int aux_trineo = 0;
+
 //Keyframes (Manipulación y dibujo)
 /*float	posX = 0.0f,
 posY = 0.0f,
@@ -283,6 +292,36 @@ void animate(void)
 		}
 	}
 
+	//Animacion trineo
+	if (animacion_trineo)
+	{
+		posicionTrineo.x = 500.0 * cos(Trineo_aument);
+		posicionTrineo.z = 500.0 * sin(Trineo_aument);
+		Trineo_aument += 0.01;
+		Trineo_aument2 += 0.57412;
+
+		if (aux_trineo == 0)
+		{
+			if (rotpierna <= 5.0f)
+			{
+				rotpierna += 0.2;
+				rotpata += 1.5; 
+			}
+			else
+				aux_trineo = 1;
+		}
+		if (aux_trineo == 1)
+		{
+			if (rotpierna >= -5.0f)
+			{
+				rotpierna -= 0.2;
+				rotpata -= 1.5;
+			}
+			else
+				aux_trineo = 0;
+		}
+	}
+	
 	/*
 	movBrazoIzq += movBrazoIzqInc;
 	movRodDer += movRodDerInc;
@@ -430,7 +469,9 @@ int main()
 	Model hamster("resources/objects/Hamster/hamster.obj");
 	Model pino("resources/objects/pino/pino.obj");
 	Model puertaG("resources/objects/puertaPrinc/puertaG.obj");
-	
+	Model trineos_renos_santa("resources/objects/trineos_renos_santa/trineos_renos_santa.obj");
+	Model pierna("resources/objects/trineos_renos_santa/pierna.obj");
+	Model pata("resources/objects/trineos_renos_santa/pata.obj");
 	/*Model botaDer("resources/objects/Personaje/bota.obj");
 	Model piernaDer("resources/objects/Personaje/piernader.obj");
 	Model piernaIzq("resources/objects/Personaje/piernader.obj");
@@ -511,6 +552,11 @@ int main()
 
 		glm::mat4 model = glm::mat4(1.0f);
 		glm::mat4 tmp = glm::mat4(1.0f);
+		glm::mat4 tmp_trineo = glm::mat4(1.0f);
+		glm::mat4 tmp_trineo2 = glm::mat4(1.0f);
+		glm::mat4 tmp_trineo3 = glm::mat4(1.0f);
+		glm::mat4 tmp_trineo4 = glm::mat4(1.0f);
+		
 		// view/projection transformations
 		glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 10000.0f);
 		glm::mat4 view = camera.GetViewMatrix();
@@ -936,6 +982,121 @@ int main()
 		staticShader.setMat4("model", model);
 		muneco3.Draw(staticShader); 
 		
+		//----------------------------------------------------------------------------------------------
+		//Trineo, Santa y Renos con modelado jerarquico
+		//----------------------------------------------------------------------------------------------
+		//Trineo, santa y renos sin piernas
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, posicionTrineo);
+		model = glm::rotate(model, glm::radians(-Trineo_aument2), glm::vec3(0.0f, 1.0f, 0.0f));
+		tmp_trineo = tmp_trineo2 = tmp_trineo3 = tmp_trineo4 = model = glm::scale(model, glm::vec3(5.0f));
+		staticShader.setMat4("model", model);
+		trineos_renos_santa.Draw(staticShader); 
+		
+		//Pierna reno 1 delantera 1
+		model = glm::mat4(1.0f);
+		model = glm::translate(tmp_trineo, glm::vec3(-4.33f, 5.3f, 24.0f));
+		tmp_trineo = model = glm::rotate(model, glm::radians(rotpierna), glm::vec3(1.0f, 0.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		pierna.Draw(staticShader);
+
+		//Pierna reno 1 delantera 2
+		model = glm::mat4(1.0f);
+		model = glm::translate(tmp_trineo, glm::vec3(2.9f, 0.0f, 0.0f)); 
+		model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		pierna.Draw(staticShader);
+
+		//Pierna reno 2 delantera 1
+		model = glm::mat4(1.0f);
+		model = glm::translate(tmp_trineo, glm::vec3(6.33f, 0.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		pierna.Draw(staticShader);
+
+		//Pierna reno 2 delantera 2
+		model = glm::mat4(1.0f);
+		model = glm::translate(tmp_trineo, glm::vec3(9.2f, 0.0f, 0.0f));
+		model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		pierna.Draw(staticShader);
+
+		//Pierna reno 1 trasera 1
+		model = glm::mat4(1.0f);
+		model = glm::translate(tmp_trineo2, glm::vec3(-4.20f, 5.3f, 20.0f));
+		tmp_trineo2 = model = glm::rotate(model, glm::radians(-rotpierna), glm::vec3(1.0f, 0.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		pierna.Draw(staticShader);
+
+		//Pierna reno 1 trasera 2
+		model = glm::mat4(1.0f);
+		model = glm::translate(tmp_trineo2, glm::vec3(2.9f, 0.0f, 0.0f));
+		model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		pierna.Draw(staticShader);
+
+		//Pierna reno 2 trasera 1
+		model = glm::mat4(1.0f);
+		model = glm::translate(tmp_trineo2, glm::vec3(6.33f, 0.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		pierna.Draw(staticShader);
+
+		//Pierna reno 2 trasera 2
+		model = glm::mat4(1.0f);
+		model = glm::translate(tmp_trineo2, glm::vec3(9.2f, 0.0f, 0.0f));
+		model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		pierna.Draw(staticShader);
+
+		//Pata reno 1 tarsera 1
+		model = glm::mat4(1.0f);
+		model = glm::translate(tmp_trineo3, glm::vec3(-4.30f, 2.4f, 20.0f));
+		tmp_trineo3 = model = glm::rotate(model, glm::radians(rotpata), glm::vec3(1.0f, 0.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		pata.Draw(staticShader);
+
+		//Pata reno 1 trasera 2
+		model = glm::mat4(1.0f);
+		model = glm::translate(tmp_trineo3, glm::vec3(3.1f, 0.0f, -0.04f));
+		staticShader.setMat4("model", model);
+		pata.Draw(staticShader);
+
+		//Pata reno 2 trasera 1
+		model = glm::mat4(1.0f);
+		model = glm::translate(tmp_trineo3, glm::vec3(6.35f, 0.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		pata.Draw(staticShader);
+
+		//Pata reno 2 trasera 2
+		model = glm::mat4(1.0f);
+		model = glm::translate(tmp_trineo3, glm::vec3(9.4f, 0.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		pata.Draw(staticShader);
+
+		//Pata reno 1 delantera 1
+		model = glm::mat4(1.0f);
+		model = glm::translate(tmp_trineo4, glm::vec3(-4.30f, 2.4f, 24.0f));
+		tmp_trineo4 = model = glm::rotate(model, glm::radians(-rotpata), glm::vec3(1.0f, 0.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		pata.Draw(staticShader);
+
+		//Pata reno 1 delantera 2
+		model = glm::mat4(1.0f);
+		model = glm::translate(tmp_trineo4, glm::vec3(3.1f, 0.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		pata.Draw(staticShader);
+
+		//Pata reno 2 delantera 1
+		model = glm::mat4(1.0f);
+		model = glm::translate(tmp_trineo4, glm::vec3(6.35f, 0.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		pata.Draw(staticShader);
+
+		//Pata reno 2 delantera 2
+		model = glm::mat4(1.0f);
+		model = glm::translate(tmp_trineo4, glm::vec3(9.4f, 0.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		pata.Draw(staticShader);
+		
 		/*
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, -70.0f));
 		model = glm::scale(model, glm::vec3(5.0f));
@@ -1110,6 +1271,10 @@ void my_input(GLFWwindow* window, int key, int scancode, int action, int mode)
 	//tecla muñeco de nieve
 	if (key == GLFW_KEY_T && action == GLFW_PRESS)
 		animacion_muneco ^= true;
+	
+	//tecla muñeco de trineo
+	if (key == GLFW_KEY_U && action == GLFW_PRESS)
+		animacion_trineo ^= true;
 	
 	//To Configure Model
 	/*if (glfwGetKey(window, GLFW_KEY_Y) == GLFW_PRESS)
