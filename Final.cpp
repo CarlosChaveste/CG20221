@@ -4,7 +4,7 @@
 /*------------- Alumno:   Chaveste Bermejo Carlos Alberto ---------------*/
 /*------------- No. Cuenta    315311284     ---------------*/
 /*------------- Alumno:   Ramirez Castañeda Jesus Eduardo ---------------*/
-/*------------- No. Cuenta    3153     ---------------*/
+/*------------- No. Cuenta    315071669     ---------------*/
 /*------------- Alumno:   Torres Rojas Eduardo ---------------*/
 /*------------- No. Cuenta    315072123   ---------------*/
 
