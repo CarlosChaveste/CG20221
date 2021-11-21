@@ -73,16 +73,7 @@ glm::vec3 lightDirection(0.0f, -1.0f, -0.0f);
 double myVariable = 0.0;
 double LuzCMov = 0.0;
 
-// posiciones
-//float x = 0.0f;
-//float y = 0.0f;
-//float	//movAuto_x = 0.0f,
-//movAuto_y = 0.0f,
-//movAuto_z = 0.0f,
-//orienta = 0.0f,
-//giroLlanta = 0.0f;
 
-//int		estado = 0;
 
 bool	animacion = false,
 animacion1 = false,
@@ -102,107 +93,58 @@ bool animacion_muneco = false;
 //Variables para movimiento del trineo
 glm::vec3 posicionTrineo(500.0f, 150.0f, 0.0f);
 float	Trineo_aument = 0.0f,
-		Trineo_aument2 = 0.0f,
-		rotpierna = 0.0f,
-		rotpata = 0.0f;
+	Trineo_aument2 = 0.0f,
+	rotpierna = 0.0f,
+	rotpata = 0.0f;
 bool animacion_trineo = false;
 int aux_trineo = 0;
 
+
 //Keyframes (Manipulación y dibujo)
-/*float	posX = 0.0f,
-posY = 0.0f,
-posZ = 0.0f,
-//rotRodIzq = 0.0f,
-//giroMonito = 0.0f,
-//movBrazoIzq = 0.0f,
-movBrazoDer = 0.0f,
-movRodDer = 0.0f,
-movCabeza = 0.0f;
+//Cascanueces
+float	brazoRot = 0.0f,
+	piernasRot = 0.0f,
+	cabezaPos = -4.0f;
 
+float	brazoRotIncr = 0.0f,
+	piernasRotIncr = 0.0f,
+	cabezaPosIncr = 0.0f;
 
-float	incX = 0.0f,
-incY = 0.0f,
-incZ = 0.0f,
-rotInc = 0.0f,
-giroMonitoInc = 0.0f,
-movBrazoIzqInc = 0.0f,
-movBrazoDerInc = 0.0f,
-movRodDerInc = 0.0f,
-movCabezaInc = 0.0f;
-
-#define MAX_FRAMES 9
-int i_max_steps = 60;
+#define MAX_FRAMES 30
+int i_max_steps = 10;
 int i_curr_steps = 0;
 typedef struct _frame
 {
 	//Variables para GUARDAR Key Frames
-	float posX;		//Variable para PosicionX
-	float posY;		//Variable para PosicionY
-	float posZ;		//Variable para PosicionZ
-	float rotRodIzq;
-	float giroMonito;
-	float movBrazoIzq;
-	float movBrazoDer;
-	float MovRodDer;
-	float movCabeza;
-
+	float	brazoRot = 0.0f,
+			piernasRot = 0.0f,
+			cabezaPos = 0.0f;
 }FRAME;
-
 FRAME KeyFrame[MAX_FRAMES];
-int FrameIndex = 0;			//introducir datos
+int FrameIndex = 29;			//introducir datos
 bool play = false;
 int playIndex = 0;
-
-
 void saveFrame(void)
 {
 	//printf("frameindex %d\n", FrameIndex);
 	std::cout << "Frame Index = " << FrameIndex << std::endl;
-
-	KeyFrame[FrameIndex].posX = posX;
-	KeyFrame[FrameIndex].posY = posY;
-	KeyFrame[FrameIndex].posZ = posZ;
-
-	KeyFrame[FrameIndex].rotRodIzq = rotRodIzq;
-	KeyFrame[FrameIndex].giroMonito = giroMonito;
-
-	KeyFrame[FrameIndex].movBrazoIzq = movBrazoIzq;
-	KeyFrame[FrameIndex].MovRodDer = movRodDer;
-	KeyFrame[FrameIndex].movBrazoDer = movBrazoDer;
-	KeyFrame[FrameIndex].movCabeza = movCabeza;
-
+	KeyFrame[FrameIndex].brazoRot = brazoRot;
+	KeyFrame[FrameIndex].piernasRot = piernasRot;
+	KeyFrame[FrameIndex].cabezaPos = cabezaPos;
 	FrameIndex++;
 }
-
 void resetElements(void)
 {
-	posX = KeyFrame[0].posX;
-	posY = KeyFrame[0].posY;
-	posZ = KeyFrame[0].posZ;
-
-	rotRodIzq = KeyFrame[0].rotRodIzq;
-	giroMonito = KeyFrame[0].giroMonito;
-
-	movBrazoIzq = KeyFrame[0].movBrazoIzq;
-	movRodDer = KeyFrame[0].MovRodDer;
-	movBrazoDer = KeyFrame[0].movBrazoDer;
-	movCabeza = KeyFrame[0].movCabeza;
-}
-
+	brazoRot = KeyFrame[0].brazoRot;
+	piernasRot = KeyFrame[0].piernasRot;
+	cabezaPos = KeyFrame[0].cabezaPos;
+	}
 void interpolation(void)
 {
-	incX = (KeyFrame[playIndex + 1].posX - KeyFrame[playIndex].posX) / i_max_steps;
-	incY = (KeyFrame[playIndex + 1].posY - KeyFrame[playIndex].posY) / i_max_steps;
-	incZ = (KeyFrame[playIndex + 1].posZ - KeyFrame[playIndex].posZ) / i_max_steps;
-
-	rotInc = (KeyFrame[playIndex + 1].rotRodIzq - KeyFrame[playIndex].rotRodIzq) / i_max_steps;
-	giroMonitoInc = (KeyFrame[playIndex + 1].giroMonito - KeyFrame[playIndex].giroMonito) / i_max_steps;
-	movBrazoIzqInc = (KeyFrame[playIndex + 1].movBrazoIzq - KeyFrame[playIndex].movBrazoIzq) / i_max_steps;
-	movRodDerInc = (KeyFrame[playIndex + 1].MovRodDer - KeyFrame[playIndex].MovRodDer) / i_max_steps;
-	movBrazoDerInc = (KeyFrame[playIndex + 1].movBrazoDer - KeyFrame[playIndex].movBrazoDer) / i_max_steps;
-	movCabezaInc = (KeyFrame[playIndex + 1].movCabeza - KeyFrame[playIndex].movCabeza) / i_max_steps;
+	brazoRotIncr = (KeyFrame[playIndex + 1].brazoRot - KeyFrame[playIndex].brazoRot) / i_max_steps;
+	piernasRotIncr = (KeyFrame[playIndex + 1].piernasRot - KeyFrame[playIndex].piernasRot) / i_max_steps;
+	cabezaPosIncr = (KeyFrame[playIndex + 1].cabezaPos - KeyFrame[playIndex].cabezaPos) / i_max_steps;
 }
-*/
 void animate(void)
 {
 	lightPosition.x = 20.0 * cos(myVariable);
@@ -291,7 +233,34 @@ void animate(void)
 			aux_muneco = 0;
 		}
 	}
-
+	if (play){
+			if (i_curr_steps >= i_max_steps) //end of animation between frames?
+			{
+				playIndex++;
+				if (playIndex > FrameIndex - 2)	//end of total animation?
+				{
+					std::cout << "Animation ended" << std::endl;
+					//printf("termina anim\n");
+					playIndex = 0;
+					play = false;					
+				}
+				else //Next frame interpolations
+				{
+					i_curr_steps = 0; //Reset counter
+									  //Interpolation
+					interpolation();
+				}
+			}
+			else
+			{
+				//Draw animation
+				cabezaPos += cabezaPosIncr;
+				brazoRot += brazoRotIncr;
+				piernasRot += piernasRotIncr;
+				i_curr_steps++;
+			}
+	}
+	
 	//Animacion trineo
 	if (animacion_trineo)
 	{
@@ -321,51 +290,7 @@ void animate(void)
 				aux_trineo = 0;
 		}
 	}
-	
-	/*
-	movBrazoIzq += movBrazoIzqInc;
-	movRodDer += movRodDerInc;
-	movBrazoDer += movBrazoDerInc;
-	movCabeza += movCabezaInc;
-	
-	if (play)
-	{
-		if (i_curr_steps >= i_max_steps) //end of animation between frames?
-		{
-			playIndex++;
-			if (playIndex > FrameIndex - 2)	//end of total animation?
-			{
-				std::cout << "Animation ended" << std::endl;
-				//printf("termina anim\n");
-				playIndex = 0;
-				play = false;
-			}
-			else //Next frame interpolations
-			{
-				i_curr_steps = 0; //Reset counter
-								  //Interpolation
-				//interpolation();
-			}
-		}
-		else
-		{
-			//Draw animation
-			posX += incX;
-			posY += incY;
-			posZ += incZ;
-
-			rotRodIzq += rotInc;
-			giroMonito += giroMonitoInc;
-
-
-			movBrazoIzq += movBrazoIzqInc;
-			movRodDer += movRodDerInc;
-			movBrazoDer += movBrazoDerInc;
-			movCabeza += movCabezaInc;
-
-			i_curr_steps++;
-		}*/
-	}
+}
 
 
 
@@ -482,6 +407,11 @@ int main()
 	Model mesa_interior("resources/objects/mesa_interior/mesa_interior.obj");
 	Model mesa_exterior("resources/objects/mesa_exterior/mesa_exterior.obj");
 	Model cama_dui("resources/objects/camas/cama_dui.obj");
+	Model casca("resources/objects/cascanueces/cuerpoDesp.obj");
+	Model cascaCa("resources/objects/cascanueces/cabeza.obj");
+	Model cascaBr("resources/objects/cascanueces/brazos.obj");
+	Model cascaPrI("resources/objects/cascanueces/piernasI.obj");
+	Model cascaPrD("resources/objects/cascanueces/piernasD.obj");
 	/*Model botaDer("resources/objects/Personaje/bota.obj");
 	Model piernaDer("resources/objects/Personaje/piernader.obj");
 	Model piernaIzq("resources/objects/Personaje/piernader.obj");
@@ -505,19 +435,127 @@ int main()
 	*/
 	//Inicialización de KeyFrames
 	
-	/**for (int i = 0; i < MAX_FRAMES; i++)
-	{
-		KeyFrame[i].posX = 0;
-		KeyFrame[i].posY = 0;
-		KeyFrame[i].posZ = 0;
-		KeyFrame[i].rotRodIzq = 0;
-		KeyFrame[i].giroMonito = 0;
-		KeyFrame[i].movBrazoIzq = 0;
-		KeyFrame[i].MovRodDer = 0;
-		KeyFrame[i].movBrazoDer = 0;
-		KeyFrame[i].movCabeza = 0;
-	}
-	*/
+	KeyFrame[0].brazoRot = 0.0f;
+		KeyFrame[0].cabezaPos = -4.0f;
+		KeyFrame[0].piernasRot = 0;
+
+		KeyFrame[1].brazoRot = 15.0f;
+		KeyFrame[1].cabezaPos = -2.0f;
+		KeyFrame[1].piernasRot = 0;
+
+		KeyFrame[2].brazoRot = 30.0f;
+		KeyFrame[2].cabezaPos = -4.0f;
+		KeyFrame[2].piernasRot = 0;
+
+		KeyFrame[3].brazoRot = 45.0f;
+		KeyFrame[3].cabezaPos = -2.0f;
+		KeyFrame[3].piernasRot = 0;
+
+		KeyFrame[4].brazoRot = 60.0f;
+		KeyFrame[4].cabezaPos = -4.0f;
+		KeyFrame[4].piernasRot = 0.0f;
+
+		KeyFrame[5].brazoRot = 45.0f;
+		KeyFrame[5].cabezaPos = -4.0f;
+		KeyFrame[5].piernasRot = 0.0f;
+
+		KeyFrame[6].brazoRot = 30.0f;
+		KeyFrame[6].cabezaPos = -2.0f;
+		KeyFrame[6].piernasRot = 0.0f;
+
+		KeyFrame[7].brazoRot = 15.0f;
+		KeyFrame[7].cabezaPos = -4.0f;
+		KeyFrame[7].piernasRot = 0.0f;
+
+		KeyFrame[8].brazoRot = 0.0f;
+		KeyFrame[8].cabezaPos = -2.0f;
+		KeyFrame[8].piernasRot = 0.0f;
+
+		KeyFrame[9].brazoRot = -15.0f;
+		KeyFrame[9].cabezaPos = -4.0f;
+		KeyFrame[9].piernasRot = 0.0f;
+
+		KeyFrame[10].brazoRot = -30.0f;
+		KeyFrame[10].cabezaPos = -2.0f;
+		KeyFrame[10].piernasRot = 0.0f;
+
+		KeyFrame[11].brazoRot = -45.0f;
+		KeyFrame[11].cabezaPos = -4.0f;
+		KeyFrame[11].piernasRot = 0.0f;
+
+		KeyFrame[12].brazoRot = -60.0f;
+		KeyFrame[12].cabezaPos = -2.0f;
+		KeyFrame[12].piernasRot = 0.0f;
+
+		KeyFrame[13].brazoRot = -45.0f;
+		KeyFrame[13].cabezaPos = -4.0f;
+		KeyFrame[13].piernasRot = 0.0f;
+
+		KeyFrame[14].brazoRot = -30.0f;
+		KeyFrame[14].cabezaPos = -2.0f;
+		KeyFrame[14].piernasRot = 0.0f;
+
+		KeyFrame[15].brazoRot = -15.0f;
+		KeyFrame[15].cabezaPos = -4.0f;
+		KeyFrame[15].piernasRot = 0.0f;
+
+		KeyFrame[16].brazoRot = 0.0f;
+		KeyFrame[16].cabezaPos = -2.0f;
+		KeyFrame[16].piernasRot = 0.0f;
+
+		KeyFrame[17].brazoRot = 15.0f;
+		KeyFrame[17].cabezaPos = -4.0f;
+		KeyFrame[17].piernasRot = 0.0f;
+
+		KeyFrame[18].brazoRot = 30.0f;
+		KeyFrame[18].cabezaPos = -2.0f;
+		KeyFrame[18].piernasRot = 0.0f;
+
+		KeyFrame[19].brazoRot = 45.0f;
+		KeyFrame[19].cabezaPos = -4.0f;
+		KeyFrame[19].piernasRot = 0.0f;
+
+		KeyFrame[20].brazoRot = 60.0f;
+		KeyFrame[20].cabezaPos = -2.0f;
+		KeyFrame[20].piernasRot = 0.0f;
+
+		KeyFrame[21].brazoRot = 45.0f;
+		KeyFrame[21].cabezaPos = -4.0f;
+		KeyFrame[21].piernasRot = 0.0f;
+
+		KeyFrame[22].brazoRot = 30.0f;
+		KeyFrame[22].cabezaPos = -2.0f;
+		KeyFrame[22].piernasRot = 0.0f;
+
+		KeyFrame[23].brazoRot = 15.0f;
+		KeyFrame[23].cabezaPos = -4.0f;
+		KeyFrame[23].piernasRot = 0.0f;
+
+		KeyFrame[24].brazoRot = 0.0f;
+		KeyFrame[24].cabezaPos = -2.0f;
+		KeyFrame[24].piernasRot = 0.0f;
+
+		KeyFrame[25].brazoRot = -15.0f;
+		KeyFrame[25].cabezaPos = -4.0f;
+		KeyFrame[25].piernasRot = 0.0f;
+
+		KeyFrame[26].brazoRot = -30.0f;
+		KeyFrame[26].cabezaPos = -2.0f;
+		KeyFrame[26].piernasRot = 0.0f;
+
+		KeyFrame[27].brazoRot = -45.0f;
+		KeyFrame[27].cabezaPos = -4.0f;
+		KeyFrame[27].piernasRot = 0.0f;
+
+		KeyFrame[28].brazoRot = -60.0f;
+		KeyFrame[28].cabezaPos = -2.0f;
+		KeyFrame[28].piernasRot = 0.0f;
+
+		KeyFrame[29].brazoRot = -45.0f;
+		KeyFrame[29].cabezaPos = 0.0f;
+		KeyFrame[29].piernasRot = 0.0f;
+	
+
 	// draw in wireframe
 	//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 
@@ -628,6 +666,44 @@ int main()
 		model = glm::scale(model, glm::vec3(0.3f));
 		staticShader.setMat4("model", model);
 		piso.Draw(staticShader);
+		
+		//CuerpoCasca
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(100.0f, 0.0f, 350.0f));
+		model = glm::scale(model, glm::vec3(2.0f, 2.0f, 2.0f));
+		staticShader.setMat4("model", model);
+		casca.Draw(staticShader);
+
+		//CabezaCasca
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(100.0f, cabezaPos, 350.0f));
+		model = glm::scale(model, glm::vec3(2.0f,2.0f, 2.0f));
+		staticShader.setMat4("model", model);
+		cascaCa.Draw(staticShader);
+
+		//BrazosCasca
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(100.0f, 26.0f, 350.0f));
+		model = glm::rotate(model, glm::radians(brazoRot), glm::vec3(0.2f, 0.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(2.0f, 2.0f, 2.0f));
+		staticShader.setMat4("model", model);
+		cascaBr.Draw(staticShader);
+
+		//PiernasCascaI
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(100.0f, 7.0f, 350.0f));
+		model = glm::rotate(model, glm::radians(brazoRot), glm::vec3(1.0f, 0.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(2.0f, 2.0f, 2.0f));
+		staticShader.setMat4("model", model);
+		cascaPrI.Draw(staticShader);
+
+		//PiernasCascaD
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(100.0f, 7.0f, 350.0f));
+		model = glm::rotate(model, glm::radians(brazoRot), glm::vec3(-1.0f, 0.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(2.0f, 2.0f, 2.0f));
+		staticShader.setMat4("model", model);
+		cascaPrD.Draw(staticShader);
 		
 		//Pino 1
 		model = glm::mat4(1.0f);
@@ -1563,6 +1639,15 @@ void my_input(GLFWwindow* window, int key, int scancode, int action, int mode)
 	//tecla muñeco de trineo
 	if (key == GLFW_KEY_U && action == GLFW_PRESS)
 		animacion_trineo ^= true;
+	//To Configure Model
+	if (glfwGetKey(window, GLFW_KEY_O) == GLFW_PRESS)
+		cabezaPos=cabezaPos + 0.25f;
+	if (glfwGetKey(window, GLFW_KEY_P) == GLFW_PRESS)
+		cabezaPos = cabezaPos - 0.25f;
+	if (glfwGetKey(window, GLFW_KEY_U) == GLFW_PRESS)
+		brazoRot=brazoRot+3;
+	if (glfwGetKey(window, GLFW_KEY_I) == GLFW_PRESS)
+		brazoRot = brazoRot - 3;
 	
 	//To Configure Model
 	/*if (glfwGetKey(window, GLFW_KEY_Y) == GLFW_PRESS)
@@ -1627,39 +1712,37 @@ void my_input(GLFWwindow* window, int key, int scancode, int action, int mode)
 
 
 
-	
-
-	//To play KeyFrame animation 
-	if (key == GLFW_KEY_P && action == GLFW_PRESS)
-	{
-		if (play == false && (FrameIndex > 1))
-		{
-			std::cout << "Play animation" << std::endl;
-			resetElements();
-			//First Interpolation				
-			interpolation();
-
-			play = true;
-			playIndex = 0;
-			i_curr_steps = 0;
-		}
-		else
-		{
-			play = false;
-			std::cout << "Not enough Key Frames" << std::endl;
-		}
-	}
-
-	//To Save a KeyFrame
-	if (key == GLFW_KEY_L && action == GLFW_PRESS)
-	{
-		if (FrameIndex < MAX_FRAMES)
-		{
-			saveFrame();
-		}
-	}
 	*/
+
+	//To play KeyFrame animation
+if (key == GLFW_KEY_K && action == GLFW_PRESS)
+{
+	if (play == false && (FrameIndex > 1))
+	{
+		std::cout << "Play animation" << std::endl;
+		resetElements();
+		//First Interpolation
+		interpolation();
+		play = true;
+		playIndex = 0;
+		i_curr_steps = 0;
 	}
+	else
+	{
+		play = false;
+		std::cout << "Not enough Key Frames" << std::endl;
+	}
+}
+//To Save a KeyFrame
+if (key == GLFW_KEY_L && action == GLFW_PRESS)
+{
+	if (FrameIndex < MAX_FRAMES)
+	{
+		saveFrame();
+	}
+}
+}
+	
 
 // glfw: whenever the window size changed (by OS or user resize) this callback function executes
 // ---------------------------------------------------------------------------------------------
