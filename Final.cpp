@@ -99,6 +99,19 @@ float	Trineo_aument = 0.0f,
 bool animacion_trineo = false;
 int aux_trineo = 0;
 
+//variables para movimiento de puerta princ (JERC)
+
+int estadoP = 0;
+float rotPuertaAnima = 90.0f;
+bool animacion_puerta = false;
+
+//variables para movimiento de estrella (JERC)
+
+int estadoE = 0;
+float rotEstrella = 0.0f;
+bool animacion_estrella = false;
+float movY_estrella = 43.0f;
+
 
 //Keyframes (Manipulación y dibujo)
 //Cascanueces
@@ -155,6 +168,32 @@ void animate(void)
 	lightLuzCMov.z = 120.0 * cos(LuzCMov);
 
 	LuzCMov += 0.1;
+	
+		//AnimacionPuertaPrinc (JERC)
+
+	if (animacion_puerta) {
+		if (estadoP == 0) {
+			if (rotPuertaAnima >= 0.0f) {
+				rotPuertaAnima -= 1.0f;
+			}
+			else {
+				estadoP = 1;
+			}
+		}
+		if (estadoP == 1) {
+			if (rotPuertaAnima <= 90.0f) {
+				rotPuertaAnima += 1.0f;
+			}
+			else {
+				estadoP = 2;
+				animacion_puerta = false;
+			}
+		}
+		if (estadoP == 2) {
+			estadoP = 0;
+		}
+	}
+	
 	//AnimacionHamster
 	hamstPosition.x= 10.0 * cos(myVariable);
 	hamstPosition.z = 90.0 * sin(myVariable);
@@ -259,6 +298,47 @@ void animate(void)
 				piernasRot += piernasRotIncr;
 				i_curr_steps++;
 			}
+	}
+	
+	//Animacion estrella arbol (JERC)
+	if (animacion_estrella) {
+		if (estadoE == 0)
+		{
+			if (movY_estrella <= 46.0f)
+			{
+				movY_estrella += 0.1;
+				rotEstrella += 5.204083;
+			}
+			else
+				estadoE = 1;
+		}
+		if (estadoE == 1)
+		{
+			if (movY_estrella >= 43.0f)
+			{
+				movY_estrella -= 0.1;
+				rotEstrella += 5.4621;
+			}
+			else
+				estadoE = 2;
+		}
+		if (estadoE == 2)
+		{
+			if (movY_estrella < 46.0f)
+			{
+				movY_estrella += 0.1;
+				rotEstrella += 5.4857;
+			}
+			else
+			{
+				estadoE = 3;
+				//animacion_estrella = false;
+			}
+		}
+		if (estadoE == 3)
+		{
+			estadoE = 0;
+		}
 	}
 	
 	//Animacion trineo
@@ -412,6 +492,10 @@ int main()
 	Model cascaBr("resources/objects/cascanueces/brazos.obj");
 	Model cascaPrI("resources/objects/cascanueces/piernasI.obj");
 	Model cascaPrD("resources/objects/cascanueces/piernasD.obj");
+	Model puertaAnima("resources/objects/puertaPrinc/puertaAnima.obj");      //(JERC)
+	Model Arbol_navida("resources/objects/Arbol_navida/Arbol_navida.obj");   //(JERC)
+	Model Estrella_navida("resources/objects/Estrella_navida/Estrella_navida.obj"); //(JERC)
+	
 	/*Model botaDer("resources/objects/Personaje/bota.obj");
 	Model piernaDer("resources/objects/Personaje/piernader.obj");
 	Model piernaIzq("resources/objects/Personaje/piernader.obj");
@@ -753,6 +837,22 @@ int main()
 		model = glm::scale(model, glm::vec3(12.0f, 12.0f, 12.0f));
 		staticShader.setMat4("model", model);
 		pasto.Draw(staticShader);
+		
+		//arbol navida //(JERC)
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(220.0f, 0.0f, -20.0f));
+		model = glm::scale(model, glm::vec3(1.5f, 1.15f, 1.5f));
+		staticShader.setMat4("model", model);
+		Arbol_navida.Draw(staticShader);
+		
+		//estrella navidad y= 43.0f //(JERC)
+
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(220.6f, movY_estrella, -18.2f));
+		model = glm::rotate(model, glm::radians(rotEstrella), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.5f, 0.3f, 0.5f));
+		staticShader.setMat4("model", model);
+		Estrella_navida.Draw(staticShader);
 
 		//Pasto 2
 		model = glm::mat4(1.0f);
@@ -1531,12 +1631,15 @@ int main()
 		// -------------------------------------------------------------------------------------------------------------------------
 		glEnable(GL_BLEND);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+		
+		// puerta principal casa //(JERC)
 		model = glm::mat4(1.0f);
-		model = glm::translate(model, glm::vec3(-15.0f, 0.0f, 30.0f));
-		model = glm::rotate(model, glm::radians(10.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::translate(model, glm::vec3(-19.0f, 25.0f, 5.0f));
+		model = glm::rotate(model, glm::radians(rotPuertaAnima), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(1.0f, 0.579f, 0.93f));
 		staticShader.setMat4("model", model);
-		puertaPrinc.Draw(staticShader);
+		puertaAnima.Draw(staticShader);
+		
 				//puerta Principal Living Room
 		model = glm::mat4(1.0f);
 		model = glm::translate(model, glm::vec3(158.50f, 0.0f, 104.50f));
@@ -1639,6 +1742,15 @@ void my_input(GLFWwindow* window, int key, int scancode, int action, int mode)
 	//tecla muñeco de trineo
 	if (key == GLFW_KEY_U && action == GLFW_PRESS)
 		animacion_trineo ^= true;
+	
+	//tecla PuertaAnima //(JERC)
+	if (key == GLFW_KEY_M && action == GLFW_PRESS)
+		animacion_puerta ^= true;
+
+	//tecla estrella animacion //(JERC)
+	if (key == GLFW_KEY_V && action == GLFW_PRESS)
+		animacion_estrella ^= true;
+	
 	//To Configure Model
 	if (glfwGetKey(window, GLFW_KEY_O) == GLFW_PRESS)
 		cabezaPos=cabezaPos + 0.25f;
