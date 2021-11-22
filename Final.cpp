@@ -495,7 +495,8 @@ int main()
 	Model puertaAnima("resources/objects/puertaPrinc/puertaAnima.obj");      //(JERC)
 	Model Arbol_navida("resources/objects/Arbol_navida/Arbol_navida.obj");   //(JERC)
 	Model Estrella_navida("resources/objects/Estrella_navida/Estrella_navida.obj"); //(JERC)
-	
+	Model puerta_garage("resources/objects/garage/puerta_garage.obj");
+	Model carro("resources/objects/garage/carro.obj");
 	/*Model botaDer("resources/objects/Personaje/bota.obj");
 	Model piernaDer("resources/objects/Personaje/piernader.obj");
 	Model piernaIzq("resources/objects/Personaje/piernader.obj");
@@ -1275,7 +1276,7 @@ int main()
 
 		//Pared trasera
 		model = glm::mat4(1.0f);
-		model = glm::translate(model, glm::vec3(230.2f, 24.32f, -232.0f));
+		model = glm::translate(model, glm::vec3(230.2f, 25.0f, -232.0f));
 		model = glm::rotate(model, glm::radians(0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(0.1f, 0.205f, 0.15f));
 		staticShader.setMat4("model", model);
@@ -1283,7 +1284,7 @@ int main()
 
 		//Pared izquierda garage
 		model = glm::mat4(1.0f);
-		model = glm::translate(model, glm::vec3(257.2f, 24.32f, -379.92f));
+		model = glm::translate(model, glm::vec3(257.2f, 25.0f, -379.92f));
 		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(0.6f, 0.205f, 0.15f));
 		staticShader.setMat4("model", model);
@@ -1291,7 +1292,7 @@ int main()
 
 		//Pared superior garage
 		model = glm::mat4(1.0f);
-		model = glm::translate(model, glm::vec3(330.0f, 24.32f, -531.92f));
+		model = glm::translate(model, glm::vec3(330.0f, 25.0f, -531.92f));
 		model = glm::rotate(model, glm::radians(0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(0.3f, 0.205f, 0.15f));
 		staticShader.setMat4("model", model);
@@ -1299,9 +1300,9 @@ int main()
 
 		//Pared derecha garage
 		model = glm::mat4(1.0f);
-		model = glm::translate(model, glm::vec3(406.95f, 24.32f, -384.2f));
+		model = glm::translate(model, glm::vec3(406.95f, 25.0f, -382.5f));  
 		model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(0.6f, 0.205f, 0.15f));
+		model = glm::scale(model, glm::vec3(0.6068f, 0.205f, 0.15f));
 		staticShader.setMat4("model", model);
 		pared.Draw(staticShader);
 
@@ -1518,6 +1519,21 @@ int main()
 		staticShader.setMat4("model", model);
 		cama_dui.Draw(staticShader);
 
+		//puerta  garage
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(332.5f, 26.58f, -232.30f)); 
+		model = glm::rotate(model, glm::radians(0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(1.97f, 1.0f, 1.7f));
+		staticShader.setMat4("model", model);
+		puerta_garage.Draw(staticShader);
+
+		//carro
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(335.5f, 0.0f, -380.30f));
+		model = glm::rotate(model, glm::radians(0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(40.0f));
+		staticShader.setMat4("model", model);
+		carro.Draw(staticShader);
 		/*
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, -70.0f));
 		model = glm::scale(model, glm::vec3(5.0f));
