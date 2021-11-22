@@ -499,6 +499,10 @@ int main()
 	Model carro("resources/objects/garage/carro.obj");
 	Model techoP("resources/objects/Techo/techoP.obj");
 	Model techoG("resources/objects/Techo/techoG.obj");
+	Model tele("resources/objects/tele/teleP.obj"); 
+	Model estante("resources/objects/estante/estante.obj");
+	Model couch("resources/objects/couch/couch.obj");
+	Model pintura("resources/objects/pintura/pintura.obj");
 	/*Model botaDer("resources/objects/Personaje/bota.obj");
 	Model piernaDer("resources/objects/Personaje/piernader.obj");
 	Model piernaIzq("resources/objects/Personaje/piernader.obj");
@@ -753,6 +757,38 @@ int main()
 		model = glm::scale(model, glm::vec3(0.3f));
 		staticShader.setMat4("model", model);
 		piso.Draw(staticShader);
+		
+		//Tele
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(205.5f, 0.0f, 90.0f));
+		model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f)); 
+		model = glm::scale(model, glm::vec3(1.2f, 1.1f, 1.0f));
+		staticShader.setMat4("model", model);
+		tele.Draw(staticShader);
+
+		//Sillon
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(200.5f, 0.0f, 20.0f));
+		model = glm::rotate(model, glm::radians(0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.8f,0.8, 0.8f));
+		staticShader.setMat4("model", model);
+		couch.Draw(staticShader);
+
+		//Estante
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(100.0f, -3.0f, 90.5f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.9f, 0.67f, 0.5f));
+		staticShader.setMat4("model", model);
+		estante.Draw(staticShader);
+
+		//Pintura
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(162.5f, 10.0f, -150.0f));
+		model = glm::rotate(model, glm::radians(0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(1.25f, 1.25f, 1.25f));
+		staticShader.setMat4("model", model);
+		pintura.Draw(staticShader);
 		
 		//CuerpoCasca
 		model = glm::mat4(1.0f);
