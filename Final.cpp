@@ -486,7 +486,7 @@ int main()
 	Model mesa_comedor("resources/objects/mesa_comedor/mesa_comedor.obj");
 	Model mesa_interior("resources/objects/mesa_interior/mesa_interior.obj");
 	Model mesa_exterior("resources/objects/mesa_exterior/mesa_exterior.obj");
-	Model cama_dui("resources/objects/camas/cama_dui.obj");
+	Model cama_ninos("resources/objects/camas/cama_ninos.obj");
 	Model casca("resources/objects/cascanueces/cuerpoDesp.obj");
 	Model cascaCa("resources/objects/cascanueces/cabeza.obj");
 	Model cascaBr("resources/objects/cascanueces/brazos.obj");
@@ -503,6 +503,9 @@ int main()
 	Model estante("resources/objects/estante/estante.obj");
 	Model couch("resources/objects/couch/couch.obj");
 	Model pintura("resources/objects/pintura/pintura.obj");
+	Model estante_cosas("resources/objects/estantes_varios/estante_cosas.obj");
+	Model estante_cajones("resources/objects/estantes_varios/estante_cajones.obj");
+	Model closet("resources/objects/estantes_varios/closet.obj");
 	/*Model botaDer("resources/objects/Personaje/bota.obj");
 	Model piernaDer("resources/objects/Personaje/piernader.obj");
 	Model piernaIzq("resources/objects/Personaje/piernader.obj");
@@ -1574,11 +1577,19 @@ int main()
 		
 		//cama dui y malcolm 
 		model = glm::mat4(1.0f);
-		model = glm::translate(model, glm::vec3(-150.0f, 0.0f, -125.0f));
-		model = glm::scale(model, glm::vec3(1.5f));
-		model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::translate(model, glm::vec3(-145.0f, 0.0f, -117.0f));
+		model = glm::scale(model, glm::vec3(0.6f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		staticShader.setMat4("model", model);
-		cama_dui.Draw(staticShader);
+		cama_ninos.Draw(staticShader);
+
+		//cama reese
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-265.0f, 0.0f, -117.0f));
+		model = glm::scale(model, glm::vec3(0.6f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		cama_ninos.Draw(staticShader);
 
 		//puerta  garage
 		model = glm::mat4(1.0f);
@@ -1595,6 +1606,38 @@ int main()
 		model = glm::scale(model, glm::vec3(40.0f));
 		staticShader.setMat4("model", model);
 		carro.Draw(staticShader);
+		
+		//estante cuarto kids
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-210.0f, 0.0f, -58.0f)); 
+		model = glm::scale(model, glm::vec3(0.9f));
+		model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		estante_cosas.Draw(staticShader);
+
+		//estante con cajones cuarto kids 1
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-145.0f, 0.0f, -165.0f));
+		model = glm::scale(model, glm::vec3(0.7f));
+		model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		estante_cajones.Draw(staticShader);
+
+		//estante con cajones cuarto kids 2
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-265.0f, 0.0f, -165.0f));
+		model = glm::scale(model, glm::vec3(0.7f));
+		model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		estante_cajones.Draw(staticShader);
+
+		//Closet 
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-260.0f, 0.0f, -270.0f));
+		model = glm::scale(model, glm::vec3(0.9f));
+		model = glm::rotate(model, glm::radians(0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		closet.Draw(staticShader); 
 		/*
 		model = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, -70.0f));
 		model = glm::scale(model, glm::vec3(5.0f));
