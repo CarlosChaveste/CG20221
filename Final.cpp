@@ -497,6 +497,8 @@ int main()
 	Model Estrella_navida("resources/objects/Estrella_navida/Estrella_navida.obj"); //(JERC)
 	Model puerta_garage("resources/objects/garage/puerta_garage.obj");
 	Model carro("resources/objects/garage/carro.obj");
+	Model techoP("resources/objects/Techo/techoP.obj");
+	Model techoG("resources/objects/Techo/techoG.obj");
 	/*Model botaDer("resources/objects/Personaje/bota.obj");
 	Model piernaDer("resources/objects/Personaje/piernader.obj");
 	Model piernaIzq("resources/objects/Personaje/piernader.obj");
@@ -839,7 +841,7 @@ int main()
 		staticShader.setMat4("model", model);
 		pasto.Draw(staticShader);
 		
-		//arbol navida //(JERC)
+		//arbol navidad //(JERC)
 		model = glm::mat4(1.0f);
 		model = glm::translate(model, glm::vec3(220.0f, 0.0f, -20.0f));
 		model = glm::scale(model, glm::vec3(1.5f, 1.15f, 1.5f));
@@ -1084,6 +1086,29 @@ int main()
 		model = glm::scale(model, glm::vec3(0.35f, 0.25f, 0.125f));
 		staticShader.setMat4("model", model);
 		techoI.Draw(staticShader);
+		
+		//TechoPrinc
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-27.50f, -103.0f, 5.0f));
+		model = glm::scale(model, glm::vec3(0.49f, 0.7f, 0.6f));
+		staticShader.setMat4("model", model);
+		techoP.Draw(staticShader);
+
+		//TechoGar
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(365.50f, -103.0f, -487.0f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.55f, 0.7f, 0.25f));
+		staticShader.setMat4("model", model);
+		techoG.Draw(staticShader);
+
+		//TechoIzqAlPrinc
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-135.0f, -103.0f, -290.0f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.35f, 0.7f, 0.37f));	
+		staticShader.setMat4("model", model);
+		techoP.Draw(staticShader);
 		
 		//Pared Derecha Lounge 1
 		model = glm::mat4(1.0f);
