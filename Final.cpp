@@ -795,21 +795,21 @@ int main()
 		
 		//CuerpoCasca
 		model = glm::mat4(1.0f);
-		model = glm::translate(model, glm::vec3(100.0f, 0.0f, 350.0f));
+		model = glm::translate(model, glm::vec3(70.0f, 0.0f, 250.0f));
 		model = glm::scale(model, glm::vec3(2.0f, 2.0f, 2.0f));
 		staticShader.setMat4("model", model);
 		casca.Draw(staticShader);
 
 		//CabezaCasca
 		model = glm::mat4(1.0f);
-		model = glm::translate(model, glm::vec3(100.0f, cabezaPos, 350.0f));
-		model = glm::scale(model, glm::vec3(2.0f,2.0f, 2.0f));
+		model = glm::translate(model, glm::vec3(70.0f, cabezaPos, 250.0f));
+		model = glm::scale(model, glm::vec3(2.0f, 2.0f, 2.0f));
 		staticShader.setMat4("model", model);
 		cascaCa.Draw(staticShader);
 
 		//BrazosCasca
 		model = glm::mat4(1.0f);
-		model = glm::translate(model, glm::vec3(100.0f, 26.0f, 350.0f));
+		model = glm::translate(model, glm::vec3(70.0f, 26.0f, 250.0f));
 		model = glm::rotate(model, glm::radians(brazoRot), glm::vec3(0.2f, 0.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(2.0f, 2.0f, 2.0f));
 		staticShader.setMat4("model", model);
@@ -817,7 +817,7 @@ int main()
 
 		//PiernasCascaI
 		model = glm::mat4(1.0f);
-		model = glm::translate(model, glm::vec3(100.0f, 7.0f, 350.0f));
+		model = glm::translate(model, glm::vec3(70.0f, 7.0f, 250.0f));
 		model = glm::rotate(model, glm::radians(brazoRot), glm::vec3(1.0f, 0.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(2.0f, 2.0f, 2.0f));
 		staticShader.setMat4("model", model);
@@ -825,11 +825,50 @@ int main()
 
 		//PiernasCascaD
 		model = glm::mat4(1.0f);
-		model = glm::translate(model, glm::vec3(100.0f, 7.0f, 350.0f));
+		model = glm::translate(model, glm::vec3(70.0f, 7.0f, 250.0f));
 		model = glm::rotate(model, glm::radians(brazoRot), glm::vec3(-1.0f, 0.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(2.0f, 2.0f, 2.0f));
 		staticShader.setMat4("model", model);
 		cascaPrD.Draw(staticShader);
+
+		//CuerpoCasca2
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-70.0f, 0.0f, 250.0f));
+		model = glm::scale(model, glm::vec3(2.0f, 2.0f, 2.0f));
+		staticShader.setMat4("model", model);
+		casca.Draw(staticShader);
+
+		//CabezaCasca2
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-70.0f, cabezaPos, 250.0f));
+		model = glm::scale(model, glm::vec3(2.0f, 2.0f, 2.0f));
+		staticShader.setMat4("model", model);
+		cascaCa.Draw(staticShader);
+
+		//BrazosCasca2
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-70.0f, 26.0f, 250.0f));
+		model = glm::rotate(model, glm::radians(brazoRot), glm::vec3(0.2f, 0.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(2.0f, 2.0f, 2.0f));
+		staticShader.setMat4("model", model);
+		cascaBr.Draw(staticShader);
+
+		//PiernasCascaI2
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-70.0f, 7.0f, 250.0f));
+		model = glm::rotate(model, glm::radians(brazoRot), glm::vec3(1.0f, 0.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(2.0f, 2.0f, 2.0f));
+		staticShader.setMat4("model", model);
+		cascaPrI.Draw(staticShader);
+
+		//PiernasCascaD2
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-70.0f, 7.0f, 250.0f));
+		model = glm::rotate(model, glm::radians(brazoRot), glm::vec3(-1.0f, 0.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(2.0f, 2.0f, 2.0f));
+		staticShader.setMat4("model", model);
+		cascaPrD.Draw(staticShader);
+
 		
 		//Pino 1
 		model = glm::mat4(1.0f);
@@ -1114,18 +1153,18 @@ int main()
 		model = glm::mat4(1.0f);
 		model = glm::translate(model, glm::vec3(-205.5f, 11.0f, 150.0f));
 		model = glm::rotate(model, glm::radians(180.0f), glm::vec3(-0.04f, 1.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(0.35f, 0.25f, 0.125f));
+		model = glm::scale(model, glm::vec3(0.35f, 0.25f, 0.5f));
 		staticShader.setMat4("model", model);
 		techo.Draw(staticShader);
-		
+
 		//Techo Izquierdo Lounge
 		model = glm::mat4(1.0f);
 		model = glm::translate(model, glm::vec3(-213.5f, 10.5f, 150.0f));
 		model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.045f, 1.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(0.35f, 0.25f, 0.125f));
+		model = glm::scale(model, glm::vec3(0.35f, 0.25f, 0.5f));
 		staticShader.setMat4("model", model);
 		techoI.Draw(staticShader);
-		
+
 		//TechoPrinc
 		model = glm::mat4(1.0f);
 		model = glm::translate(model, glm::vec3(-27.50f, -103.0f, 5.0f));
@@ -1135,7 +1174,7 @@ int main()
 
 		//TechoGar
 		model = glm::mat4(1.0f);
-		model = glm::translate(model, glm::vec3(365.50f, -103.0f, -487.0f));
+		model = glm::translate(model, glm::vec3(365.50f, -103.0f, -483.0f));
 		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(0.55f, 0.7f, 0.25f));
 		staticShader.setMat4("model", model);
@@ -1145,7 +1184,7 @@ int main()
 		model = glm::mat4(1.0f);
 		model = glm::translate(model, glm::vec3(-135.0f, -103.0f, -290.0f));
 		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(0.35f, 0.7f, 0.37f));	
+		model = glm::scale(model, glm::vec3(0.35f, 0.7f, 0.37f));
 		staticShader.setMat4("model", model);
 		techoP.Draw(staticShader);
 		
