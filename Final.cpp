@@ -515,6 +515,11 @@ int main()
 	Model closet("resources/objects/estantes_varios/closet.obj");
 	Model cama_padres("resources/objects/camas/cama_padres.obj");
 	Model PC("resources/objects/PC/PC.obj");
+	Model pilaRegalos("resources/objects/regalos/pilaRegalos.obj");
+	Model esferasD("resources/objects/esferas/tira10.obj");
+	Model corona("resources/objects/corona/corona.obj");
+	Model carroM("resources/objects/carroMadera/carroMadera.obj");
+	
 	//Inicialización de KeyFrames
 	
 	KeyFrame[0].brazoRot = 0.0f;
@@ -876,15 +881,15 @@ int main()
 		
 		//arbol navidad //(JERC)
 		model = glm::mat4(1.0f);
-		model = glm::translate(model, glm::vec3(220.0f, 0.0f, -20.0f));
+		model = glm::translate(model, glm::vec3(220.0f, 0.0f, -27.0f));
 		model = glm::scale(model, glm::vec3(1.5f, 1.15f, 1.5f));
 		staticShader.setMat4("model", model);
 		Arbol_navida.Draw(staticShader);
-		
+
 		//estrella navidad y= 43.0f //(JERC)
 
 		model = glm::mat4(1.0f);
-		model = glm::translate(model, glm::vec3(220.6f, movY_estrella, -18.2f));
+		model = glm::translate(model, glm::vec3(220.6f, movY_estrella, -25.2f));
 		model = glm::rotate(model, glm::radians(rotEstrella), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(0.5f, 0.3f, 0.5f));
 		staticShader.setMat4("model", model);
@@ -943,11 +948,11 @@ int main()
 
 		//SantaChocolatal
 		model = glm::mat4(1.0f);
-		model = glm::translate(model, glm::vec3(-90.0f, 2.0f, 7.5f));
+		model = glm::translate(model, glm::vec3(-90.0f, 2.0f, 17.5f));
 		model = glm::scale(model, glm::vec3(65.0f, 65.0f, 65.0f));
 		staticShader.setMat4("model", model);
-		cSanta.Draw(staticShader);	
-
+		cSanta.Draw(staticShader);
+		
 		//Campanas
 		model = glm::mat4(1.0f);
 		model = glm::translate(model, glm::vec3(-207.5f, 55.0f, 162.5f));
@@ -975,13 +980,99 @@ int main()
 		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
 		staticShader.setMat4("model", model);
 		campanas.Draw(staticShader);
-
+		
 		//Regalos
 		model = glm::mat4(1.0f);
-		model = glm::translate(model, glm::vec3(50.0f, 0.0f, 157.5f));
+		model = glm::translate(model, glm::vec3(70.0f, 0.0f, 125.5f));
 		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
 		staticShader.setMat4("model", model);
 		regalos.Draw(staticShader);
+
+		//Pila Regalos
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-90.0f, 0.0f, 150.5f));
+		model = glm::scale(model, glm::vec3(0.4f, 0.4f, 0.4f));
+		staticShader.setMat4("model", model);
+		pilaRegalos.Draw(staticShader);
+		
+		//Tira esferas 
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-90.0f, 46.5f, 115.0f));
+		model = glm::scale(model, glm::vec3(0.4f, 0.4f, 0.4f));
+		staticShader.setMat4("model", model);
+		esferasD.Draw(staticShader);
+
+		//Tira esferas 2
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-40.0f, 46.5f, 115.0f));
+		model = glm::scale(model, glm::vec3(0.4f, 0.4f, 0.4f));
+		staticShader.setMat4("model", model);
+		esferasD.Draw(staticShader);
+
+		//Tira esferas 3
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(10.0f, 46.5f, 115.0f));
+		model = glm::scale(model, glm::vec3(0.4f, 0.4f, 0.4f));
+		staticShader.setMat4("model", model);
+		esferasD.Draw(staticShader);
+
+		//Tira esferas 4
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(60.0f, 46.5f, 115.0f));
+		model = glm::scale(model, glm::vec3(0.4f, 0.4f, 0.4f));
+		staticShader.setMat4("model", model);
+		esferasD.Draw(staticShader);
+
+		//Tira esferas 5
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(110.0f, 46.5f, 115.0f));
+		model = glm::scale(model, glm::vec3(0.4f, 0.4f, 0.4f));
+		staticShader.setMat4("model", model);
+		esferasD.Draw(staticShader);
+
+		//Tira esferas 6
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(160.0f, 46.5f, 115.0f));
+		model = glm::scale(model, glm::vec3(0.4f, 0.4f, 0.4f));
+		staticShader.setMat4("model", model);
+		esferasD.Draw(staticShader);
+
+		//Tira esferas 7
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(210.0f, 46.5f, 115.0f));
+		model = glm::scale(model, glm::vec3(0.4f, 0.4f, 0.4f));
+		staticShader.setMat4("model", model);
+		esferasD.Draw(staticShader);
+		
+
+		//Corona
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(160.0f, 10.5f, 109.0f));
+		model = glm::scale(model, glm::vec3(0.5f, 0.5f,0.5f));
+		staticShader.setMat4("model", model);
+		corona.Draw(staticShader);
+
+		//Corona Izq
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-120.0f, 10.0f, 52.0f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.5f, 0.5f, 0.5f));
+		staticShader.setMat4("model", model);
+		corona.Draw(staticShader);
+
+		//Carro Madera
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(210.0f, 0.5f, -50.0f));
+		model = glm::scale(model, glm::vec3(0.2f, 0.2f, 0.2f));
+		staticShader.setMat4("model", model);
+		carroM.Draw(staticShader);
+
+		//Pila Regalos adentro
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(200.0f, 0.0f, -20.0f));
+		model = glm::scale(model, glm::vec3(0.22f, 0.22f, 0.22f));
+		staticShader.setMat4("model", model);
+		pilaRegalos.Draw(staticShader);
 
 				
 		//Pared Superior Parents Room
