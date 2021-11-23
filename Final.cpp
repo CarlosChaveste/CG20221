@@ -513,7 +513,8 @@ int main()
 	Model estante_cosas("resources/objects/estantes_varios/estante_cosas.obj");
 	Model estante_cajones("resources/objects/estantes_varios/estante_cajones.obj");
 	Model closet("resources/objects/estantes_varios/closet.obj");
-	
+	Model cama_padres("resources/objects/camas/cama_padres.obj");
+	Model PC("resources/objects/PC/PC.obj");
 	//Inicialización de KeyFrames
 	
 	KeyFrame[0].brazoRot = 0.0f;
@@ -1630,7 +1631,63 @@ int main()
 		model = glm::scale(model, glm::vec3(0.9f));
 		model = glm::rotate(model, glm::radians(0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		staticShader.setMat4("model", model);
+		closet.Draw(staticShader);
+
+		//Cama padres
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-185.0f, 0.0f, -444.0f)); 
+		model = glm::scale(model, glm::vec3(5.0f));
+		model = glm::rotate(model, glm::radians(0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		cama_padres.Draw(staticShader);
+
+		//Sillon padres
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-108.0f, 0.0f, -455.0f)); 
+		model = glm::scale(model, glm::vec3(0.6f, 1.5f, 1.5f));
+		model = glm::rotate(model, glm::radians(0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		Sillon_flores.Draw(staticShader);
+
+		//Sillon padres 2
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-258.0f, 0.0f, -455.0f));
+		model = glm::scale(model, glm::vec3(0.6f, 1.5f, 1.5f));
+		model = glm::rotate(model, glm::radians(0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		Sillon_flores.Draw(staticShader);
+
+		//Estante cajones padres
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-135.0f, 0.0f, -297.5f));
+		model = glm::scale(model, glm::vec3(0.7f));
+		model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		estante_cajones.Draw(staticShader);
+
+		//Estante cajones padres 2
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-288.0f, 0.0f, -420.0f));
+		model = glm::scale(model, glm::vec3(0.7f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f)); 
+		staticShader.setMat4("model", model);
+		estante_cajones.Draw(staticShader);
 		
+		//PC
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-269.6f, 0.0f, -316.0f));
+		model = glm::scale(model, glm::vec3(0.75f));
+		model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		PC.Draw(staticShader);
+
+		//Estante cocina
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-83.0f, -9.4f, -60.0f));
+		model = glm::scale(model, glm::vec3(0.75f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		estante.Draw(staticShader); 
 		
 		// -------------------------------------------------------------------------------------------------------------------------
 		//  Transparente 
