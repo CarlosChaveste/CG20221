@@ -519,12 +519,13 @@ int main()
 	Model esferasD("resources/objects/esferas/tira10.obj");
 	Model corona("resources/objects/corona/corona.obj");
 	Model carroM("resources/objects/carroMadera/carroMadera.obj");
-	
 	Model Sillon_cafe("resources/objects/Sillon_cafe/Sillon_cafe.obj"); 
 	Model Sillon_flores("resources/objects/Sillon_flores/Sillon_flores.obj"); 
 	Model Chimenea("resources/objects/Chimenea/Chimenea.obj"); 
 	Model Estante_lounge("resources/objects/Estante_lounge/Estante_lounge.obj"); 
-	
+	Model Sillon_flores("resources/objects/Sillon_flores/Sillon_flores.obj");
+	Model horno("resources/objects/hornoLavadora/horno.obj");
+	Model lavadora("resources/objects/hornoLavadora/lavadora.obj");
 	
 	//Inicialización de KeyFrames
 	
@@ -1890,8 +1891,30 @@ int main()
 		staticShader.setMat4("model", model);
 		Estante_lounge.Draw(staticShader);
 
-		
-		
+		//horno
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-59.5f, 0.3f, -138.6f));
+		model = glm::rotate(model, glm::radians(0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.8f));
+		staticShader.setMat4("model", model);
+		horno.Draw(staticShader);
+
+		//lavadora
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-52.2f, 0.0f, -185.0f));
+		model = glm::rotate(model, glm::radians(0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.8f));
+		staticShader.setMat4("model", model);
+		lavadora.Draw(staticShader);
+
+
+		//lavadora 2
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-52.2f, 0.0f, -215.0f));
+		model = glm::rotate(model, glm::radians(0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.8f));
+		staticShader.setMat4("model", model);
+		lavadora.Draw(staticShader); 
 		
 		skyboxShader.use();
 		skybox.Draw(skyboxShader, view, projection, camera);
