@@ -499,9 +499,9 @@ int main()
 	Model cascaBr("resources/objects/cascanueces/brazos.obj");
 	Model cascaPrI("resources/objects/cascanueces/piernasI.obj");
 	Model cascaPrD("resources/objects/cascanueces/piernasD.obj");
-	Model puertaAnima("resources/objects/puertaPrinc/puertaAnima.obj");      //(JERC)
-	Model Arbol_navida("resources/objects/Arbol_navida/Arbol_navida.obj");   //(JERC)
-	Model Estrella_navida("resources/objects/Estrella_navida/Estrella_navida.obj"); //(JERC)
+	Model puertaAnima("resources/objects/puertaPrinc/puertaAnima.obj");      
+	Model Arbol_navida("resources/objects/Arbol_navida/Arbol_navida.obj");  
+	Model Estrella_navida("resources/objects/Estrella_navida/Estrella_navida.obj"); 
 	Model puerta_garage("resources/objects/garage/puerta_garage.obj");
 	Model carro("resources/objects/garage/carro.obj");
 	Model techoP("resources/objects/Techo/techoP.obj");
@@ -519,6 +519,12 @@ int main()
 	Model esferasD("resources/objects/esferas/tira10.obj");
 	Model corona("resources/objects/corona/corona.obj");
 	Model carroM("resources/objects/carroMadera/carroMadera.obj");
+	
+	Model Sillon_cafe("resources/objects/Sillon_cafe/Sillon_cafe.obj"); 
+	Model Sillon_flores("resources/objects/Sillon_flores/Sillon_flores.obj"); 
+	Model Chimenea("resources/objects/Chimenea/Chimenea.obj"); 
+	Model Estante_lounge("resources/objects/Estante_lounge/Estante_lounge.obj"); 
+	
 	
 	//Inicialización de KeyFrames
 	
@@ -1850,6 +1856,40 @@ int main()
 		model = glm::scale(model, glm::vec3(0.58f, 0.58f, 0.745f));
 		staticShader.setMat4("model", model);
 		puertaG.Draw(staticShader);
+		
+		//lounge 
+		//sillon cafe lounge    
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-208.0f, 0.0f, 130.0f));
+		model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(1.7f, 1.5f, 2.0f));
+		staticShader.setMat4("model", model);
+		Sillon_cafe.Draw(staticShader);
+
+		//chimenea  
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-285.0f, 0.0f, 50.0f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(1.5f, 1.5f, 1.5f));
+		staticShader.setMat4("model", model);
+		Chimenea.Draw(staticShader);
+
+		//sillon flores     
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-205.0f, 0.0f, 45.0f));
+		model = glm::rotate(model, glm::radians(270.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(1.7f, 1.8f, 1.8f));
+		staticShader.setMat4("model", model);
+		Sillon_flores.Draw(staticShader);
+
+		//estante     
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-225.0f, 0.0f, -43.0f));
+		model = glm::rotate(model, glm::radians(0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(1.3f, 1.0f, 1.0f));
+		staticShader.setMat4("model", model);
+		Estante_lounge.Draw(staticShader);
+
 		
 		
 		
