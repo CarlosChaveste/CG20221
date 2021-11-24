@@ -527,6 +527,16 @@ int main()
 	Model horno("resources/objects/hornoLavadora/horno.obj");
 	Model lavadora("resources/objects/hornoLavadora/lavadora.obj");
 	
+	Model Lavabo("resources/objects/Lavabo/Lavabo.obj");
+	Model ToiletP("resources/objects/Toilet/ToiletP.obj");
+	Model Banera("resources/objects/Banera/Banera.obj");
+	Model Regadera("resources/objects/Regadera/Regadera.obj");
+	Model Papelbano("resources/objects/Papelbano/Papelbano.obj");
+	Model Cortinabano("resources/objects/Cortinabano/Cortinabano.obj");
+	Model Llaveagua("resources/objects/Llaveagua/Llaveagua.obj");
+	Model Mueblebano("resources/objects/Mueblebano/Mueblebano.obj");
+	Model Utileriabano("resources/objects/Utileriabano/Utileriabano.obj");
+	
 	//Inicialización de KeyFrames
 	
 	KeyFrame[0].brazoRot = 0.0f;
@@ -1730,6 +1740,79 @@ int main()
 		model = glm::rotate(model, glm::radians(0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		staticShader.setMat4("model", model);
 		closet.Draw(staticShader);
+		
+		//Banio
+		//Lavabo
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-177.0f, 0.0f, -234.0f));
+		model = glm::scale(model, glm::vec3(1.4f));
+		model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		Lavabo.Draw(staticShader);
+
+		//Toilet
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-170.5f, 0.0f, -283.0f));
+		model = glm::scale(model, glm::vec3(1.6f));
+		model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		ToiletP.Draw(staticShader);
+
+		//Banera
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-240.5f, 0.0f, -248.5f));
+		model = glm::scale(model, glm::vec3(2.0f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		Banera.Draw(staticShader);
+
+		//Regadera
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-237.5f, 0.0f, -301.5f));
+		model = glm::scale(model, glm::vec3(2.7f));
+		model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		Regadera.Draw(staticShader);
+
+		//Papel banio
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-180.5f, 20.0f, -301.0f));
+		model = glm::scale(model, glm::vec3(2.7f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		Papelbano.Draw(staticShader);
+
+		//Cortina Banio
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-230.5f, 7.0f, -272.5f));
+		model = glm::scale(model, glm::vec3(2.5f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		Cortinabano.Draw(staticShader);
+
+		//Llave agua
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-248.5f, 10.0f, -248.5f));
+		model = glm::scale(model, glm::vec3(1.3f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		Llaveagua.Draw(staticShader);
+
+		//Mueble Banio
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-164.5f, 0.0f, -283.0f));
+		model = glm::scale(model, glm::vec3(3.5f));
+		model = glm::rotate(model, glm::radians(0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		Mueblebano.Draw(staticShader);
+
+		//Utileria banio
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(-135.5f, 10.0f, -275.0f));
+		model = glm::scale(model, glm::vec3(2.0f));
+		model = glm::rotate(model, glm::radians(-70.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		staticShader.setMat4("model", model);
+		Utileriabano.Draw(staticShader);
 
 		//Cama padres
 		model = glm::mat4(1.0f);
