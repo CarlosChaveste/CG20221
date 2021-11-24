@@ -520,13 +520,11 @@ int main()
 	Model corona("resources/objects/corona/corona.obj");
 	Model carroM("resources/objects/carroMadera/carroMadera.obj");
 	Model Sillon_cafe("resources/objects/Sillon_cafe/Sillon_cafe.obj"); 
-	Model Sillon_flores("resources/objects/Sillon_flores/Sillon_flores.obj"); 
 	Model Chimenea("resources/objects/Chimenea/Chimenea.obj"); 
 	Model Estante_lounge("resources/objects/Estante_lounge/Estante_lounge.obj"); 
 	Model Sillon_flores("resources/objects/Sillon_flores/Sillon_flores.obj");
 	Model horno("resources/objects/hornoLavadora/horno.obj");
 	Model lavadora("resources/objects/hornoLavadora/lavadora.obj");
-	
 	Model Lavabo("resources/objects/Lavabo/Lavabo.obj");
 	Model ToiletP("resources/objects/Toilet/ToiletP.obj");
 	Model Banera("resources/objects/Banera/Banera.obj");
