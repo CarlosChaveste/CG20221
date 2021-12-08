@@ -94,6 +94,18 @@ float	movY_bola3 = 0.5f,
 int aux_muneco = 0;
 bool animacion_muneco = false;
 
+//Variables para animacion arbol
+float	movY_arbolUno = 0.0f,
+movY_arbolDos = 0.0f,
+movY_arbolTres = 0.0f,
+movY_arbolCuatro = 0.0f,
+rot_arbolUno = 0.0f,
+rot_arbolDos = 0.0f,
+rot_arbolTres = 0.0f,
+rot_arbolCuatro = 0.0f;
+int aux_arbol = 0;
+bool animacion_arbol = false;
+
 //Variables para movimiento del trineo
 glm::vec3 posicionTrineo(500.0f, 150.0f, 0.0f);
 float	Trineo_aument = 0.0f,
@@ -345,6 +357,67 @@ void animate(void)
 		}
 	}
 	
+	//animacion arbol 
+	if (animacion_arbol)
+	{
+		if (aux_arbol == 0)
+		{
+			if (movY_arbolCuatro <= 7.0f)
+			{
+				movY_arbolUno += 0.005;
+				movY_arbolDos += 0.01;
+				movY_arbolTres += 0.02;
+				movY_arbolCuatro += 0.03;
+				rot_arbolUno += 0.5404083;
+				rot_arbolDos -= 0.4304083;
+				rot_arbolTres += 0.3204083;
+				rot_arbolCuatro -= 0.2104083;
+
+			}
+			else
+				aux_arbol = 1;
+		}
+		if (aux_arbol == 1)
+		{
+			if (movY_arbolCuatro >= -1.0f)
+			{
+				movY_arbolUno -= 0.005;
+				movY_arbolDos -= 0.01;
+				movY_arbolTres -= 0.02;
+				movY_arbolCuatro -= 0.03;
+				rot_arbolUno -= 0.5404083;
+				rot_arbolDos += 0.4304083;
+				rot_arbolTres -= 0.3204083;
+				rot_arbolCuatro += 0.2104083;
+			}
+			else
+				aux_arbol = 2;
+		}
+		if (aux_arbol == 2)
+		{
+			if (movY_arbolCuatro < 8.0f)
+			{
+				movY_arbolUno += 0.005;
+				movY_arbolDos += 0.01;
+				movY_arbolTres += 0.02;
+				movY_arbolCuatro += 0.03;
+				rot_arbolUno += 0.5404083;
+				rot_arbolDos -= 0.4304083;
+				rot_arbolTres += 0.3204083;
+				rot_arbolCuatro -= 0.2104083;
+			}
+			else
+			{
+				aux_arbol = 3;
+				
+			}
+		}
+		if (aux_arbol == 3)
+		{
+			aux_arbol = 0;
+		}
+	}
+	
 	//Animacion trineo
 	if (animacion_trineo)
 	{
@@ -500,7 +573,10 @@ int main()
 	Model cascaPrI("resources/objects/cascanueces/piernasI.obj");
 	Model cascaPrD("resources/objects/cascanueces/piernasD.obj");
 	Model puertaAnima("resources/objects/puertaPrinc/puertaAnima.obj");      
-	Model Arbol_navida("resources/objects/Arbol_navida/Arbol_navida.obj");  
+	Model Arbol_navidaUno("resources/objects/Arbol_navida/Arbol_navidaUno.obj");
+	Model Arbol_navidaDos("resources/objects/Arbol_navida/Arbol_navidaDos.obj");
+	Model Arbol_navidaTres("resources/objects/Arbol_navida/Arbol_navidaTres.obj");
+	Model Arbol_navidaCuatro("resources/objects/Arbol_navida/Arbol_navidaCuatro.obj");  
 	Model Estrella_navida("resources/objects/Estrella_navida/Estrella_navida.obj"); 
 	Model puerta_garage("resources/objects/garage/puerta_garage.obj");
 	Model carro("resources/objects/garage/carro.obj");
@@ -894,12 +970,35 @@ int main()
 		staticShader.setMat4("model", model);
 		pasto.Draw(staticShader);
 		
-		//arbol navidad //(JERC)
+		//arbol navidad
 		model = glm::mat4(1.0f);
-		model = glm::translate(model, glm::vec3(220.0f, 0.0f, -27.0f));
-		model = glm::scale(model, glm::vec3(1.5f, 1.15f, 1.5f));
+		model = glm::translate(model, glm::vec3(220.0f, movY_arbolUno, -27.0f));
+		model = glm::rotate(model, glm::radians(rot_arbolUno), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(1.2f, 1.0, 1.2f));
 		staticShader.setMat4("model", model);
-		Arbol_navida.Draw(staticShader);
+		Arbol_navidaUno.Draw(staticShader);
+
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(220.0f, movY_arbolDos, -27.0f));
+		model = glm::rotate(model, glm::radians(rot_arbolDos), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(1.2f, 1.0, 1.2f));
+		staticShader.setMat4("model", model);
+		Arbol_navidaDos.Draw(staticShader);
+
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(220.0f, movY_arbolTres, -27.0f));
+		model = glm::rotate(model, glm::radians(rot_arbolTres), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(1.2f, 1.0, 1.2f));
+		staticShader.setMat4("model", model);
+		Arbol_navidaTres.Draw(staticShader);
+
+		model = glm::mat4(1.0f);
+		model = glm::translate(model, glm::vec3(220.0f, movY_arbolCuatro, -27.0f));
+		model = glm::rotate(model, glm::radians(rot_arbolCuatro), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(1.2f, 1.0, 1.2f));
+		staticShader.setMat4("model", model);
+		Arbol_navidaCuatro.Draw(staticShader);
+
 
 		//estrella navidad y= 43.0f //(JERC)
 
@@ -2047,9 +2146,10 @@ void my_input(GLFWwindow* window, int key, int scancode, int action, int mode)
 	if (key == GLFW_KEY_M && action == GLFW_PRESS)
 		animacion_puerta ^= true;
 
-	//tecla estrella animacion //(JERC)
+	//tecla estrella animacion y arbol animacion
 	if (key == GLFW_KEY_V && action == GLFW_PRESS)
-		animacion_estrella ^= true;
+		animacion_estrella ^= true,
+		animacion_arbol ^= true;
 	
 	//To Configure Model
 	if (glfwGetKey(window, GLFW_KEY_O) == GLFW_PRESS)
