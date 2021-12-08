@@ -1,0 +1,53 @@
+# 3ds Max Wavefront OBJ Exporter v0.99 - (c)2007 guruware
+# File Created: 23.11.2021 08:29:27
+
+newmtl Wreath
+	Kd 1.0000 1.0000 1.0000
+	Ks 0.0026 0.0026 0.0026
+	Tr 0.0000
+	d 1.0000
+	Tf 1.0000 1.0000 1.0000
+	Pr 0.7700
+	Pm 0.0000
+	Pc 0.0000
+	Pcr 0.0000
+	Ni 1.5000
+	Ke 0.0000 0.0000 0.0000
+	illum 2
+	map_Kd 12170_Wreath_diffuse.jpg
+	bump 12170_Wreath_bump.jpg
+	map_bump 12170_Wreath_bump.jpg
+
+newmtl Tree_Cones
+	Kd 1.0000 1.0000 1.0000
+	Ks 0.9000 0.9000 0.9000
+	Tr 0.0000
+	d 1.0000
+	Tf 1.0000 1.0000 1.0000
+	Pr 0.5900
+	Pm 0.0000
+	Pc 0.0000
+	Pcr 0.0000
+	Ni 1.5000
+	Ke 0.0000 0.0000 0.0000
+	illum 2
+	map_Kd 12170_Wreath_cones_diffuse.jpg
+	bump 12170_Wreath_cones_bump.jpg
+	map_bump 12170_Wreath_cones_bump.jpg
+
+newmtl Berry
+	Kd 1.0000 1.0000 1.0000
+	Ks 0.2494 0.1082 0.1082
+	Tr 0.0000
+	d 1.0000
+	Tf 1.0000 1.0000 1.0000
+	Pr 0.6300
+	Pm 0.0000
+	Pc 0.0000
+	Pcr 0.0000
+	Ni 1.5000
+	Ke 0.0000 0.0000 0.0000
+	illum 2
+	map_Kd 12170_Wreath_cones_diffuse.jpg
+	bump 12170_Wreath_cones_bump.jpg
+	map_bump 12170_Wreath_cones_bump.jpg
